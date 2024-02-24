@@ -1,0 +1,208 @@
+@import 'variables.scss';
+
+body {
+  background-color: $gris-claro !important;
+}
+
+
+
+header {
+  background-color: $violeta-2;
+  border-bottom: 1px solid black;
+  padding: 20px 0;
+
+  .logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+  }
+
+  .color-1 {
+    color: $celeste;
+  }
+
+  .color-2 {
+    color: $celeste-2;
+  }
+
+ 
+
+  .btn-submit {
+    margin-left: auto;
+    background-color: $celeste !important;
+    border: 1px solid $celeste-2;
+    color: $violeta-2 !important;
+  }
+}
+
+footer {
+  background-color: $violeta-2;
+  padding: 30px 0;
+
+  .texto-footer {
+    color: $gris-claro;
+    font-weight: 500;
+  }
+}
+
+.main {
+  padding: 20px 0;
+
+  .card-container {
+    .row {
+      width: 100%;
+
+      .card {
+        border-radius: 8px;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        border: none;
+        margin-bottom: 30px;
+
+        .card-header {
+          background-color: $violeta !important;
+          padding: 10px 15px;
+
+          .title {
+            color: $gris-claro;
+            margin-bottom: 0
+          }
+        }
+
+        .card-body {
+          background-color: $celeste-2 !important;
+          padding: 15px;
+          border-radius: 0px 0px 8px 8px;
+          color: $gris-claro;
+          font-weight: 500;
+
+          .circulo-check {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background-color: green;
+            margin: 0 10px;
+          }
+          
+          .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+
+            .btn {
+              height: fit-content;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .message {
+    color: $celeste-2;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .prog-table-item {
+    color: $celeste-2;
+    font-weight: 500;
+    font-size: 18px;
+
+  }
+
+  .nombre-fila {
+    width: 150px;
+  }
+
+  .celda {
+    height: 27px;
+    width: 27px;
+    border-radius: 3px;
+    background-color: $blanco;
+    border: 1px solid $gris-claro;
+  }
+
+  .num {
+    background-color: $celeste-2;
+    color: $gris-claro;
+    font-weight: 500;
+  }
+}
+
+.project {
+  .form-nueva-subcat {
+    color: $violeta;
+  padding: 10px 0;
+
+  .container {
+    gap: 10px;
+
+    .input-form {
+      border-radius: 6px;
+    }
+  }
+  }
+}
+
+.form-nuevo {
+  background-color: $celeste-2;
+  border-bottom: 1px solid $negro;
+  color: $gris-claro;
+  padding: 10px 0;
+
+  .container {
+    gap: 10px;
+
+    .input-form {
+      border-radius: 6px;
+      height: 37.33px;
+    }
+    .form-label {
+      margin-bottom: 0;
+      font-size: 16px;
+      color: $gris-claro;
+    }
+  }
+}
+
+.titulo-header {
+  color: $gris-claro;
+}
+
+.titulo {
+  color: $violeta-2;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.btn {
+  border-radius: 8px;
+
+  &.btn-toggle {
+    border: 1px solid blue;
+    background-color: lightblue;
+    color: blue;
+  }
+
+  &.btn-delete {
+    background-color: $violeta-2;
+    color: $gris-claro !important;
+
+    &:hover {
+      background-color: $violeta-2-dark;
+    }
+  }
+
+  &.btn-celeste {
+    background-color: $celeste;
+    color: $gris-claro;
+
+    &:hover {
+      background-color: $celeste-dark;
+    }
+  }
+
+  &:hover {}
+}
