@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { BrowserRouter, createBrowserRouter } from "react-router-dom"
+import { BrowserRouter, RouterProvider, createBrowserRouter } from "react-router-dom"
 import Home from "./components/pages/Home"
 
 // Bootstrap CSS
