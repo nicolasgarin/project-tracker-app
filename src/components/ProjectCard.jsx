@@ -18,7 +18,7 @@ export default function Project({ project, dispatch }) {
                     <div className='card-body'>
                         <div className='subcat'>
                             {project.subcategorias.map(subcat => {
-                                return <div className='' id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}</div>
+                                return <div className='' id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}<input type='checkbox'></input></div>
                             })}
                         </div>
 

@@ -5,7 +5,7 @@ import { ACCIONES } from '../../App';
 import NewProject from '../NewProject';
 import ProjectProgressList from '../ProjectProgressList';
 
-export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNuevoT, newProjectEl }) {
+export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNuevoT, newProjectEl, diaActual }) {
 
   function handleSubmit(e) {
     e.preventDefault()

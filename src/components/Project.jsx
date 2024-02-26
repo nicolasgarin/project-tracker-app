@@ -34,7 +34,7 @@ export default function Project({ data, nuevoSubP, setNuevoSubP, dispatch }) {
           <div className='subcat-list'>
             {proyecto.subcategorias.map(subcat => {
               return <div className='subcat d-flex align-items-center mb-2'>
-                <div id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}</div>
+                <div id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}{subcat.diasCheckeados.map(dia=>{return <div>{dia}</div>})}</div>
                 <button onClick={() => dispatch({ tipo: ACCIONES.BORRAR_SUBPROYECTO, payload: { id: id, idSubP: subcat.idSubcat } })} className='btn btn-delete'>Borrar</button>
               </div>
             })}

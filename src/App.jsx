@@ -6,6 +6,12 @@ import Footer from "./components/layout/Footer"
 import Header from "./components/layout/Header"
 import Project from "./components/Project"
 
+const objDate = new Date()
+const year = objDate.getFullYear()
+const month = objDate.getMonth() + 1
+const day = objDate.getDay()
+const diaActual = day + "-" + month + "-" + year
+
 export const ACCIONES = {
   AGREGAR_PROYECTO: 'agregar-proyecto',
   CHECKEAR_PROYECTO: 'checkear-proyecto',
@@ -47,7 +53,7 @@ function nuevoSubProyecto(nombreSubP, idP, categorias) {
       return {
         ...categoria,
         subcategorias: [...categoria.subcategorias,
-        { nombreSubcat: nombreSubP, idSubcat: uuidv4() }
+        { nombreSubcat: nombreSubP, idSubcat: uuidv4(), diasCheckeados: [] }
         ]
       }
     } else {
@@ -67,6 +73,27 @@ function borrarSubProyecto(idP, idSubP, categorias) {
   })
 }
 
+function actualizarSubProyecto(idP, idSubP) {
+  return categorias.map(categoria => {
+    if (categoria.id === idP) {
+      categoria.subcategorias.map(subcat => {
+        if (subcat.id === idSubP) {
+          return (
+            <div></div>
+          )
+        }
+      })
+      return {
+        ...categoria,
+        subcategorias: [...categoria.subcategorias,
+        { nombreSubcat: nombreSubP, idSubcat: uuidv4() }
+        ]
+      }
+    } else {
+      return categoria
+    }
+  })}
+
 export default function App() {
   const [categorias, dispatch] = useReducer(reducer, DATA)
   const [nuevoP, setNuevoP] = useState('')
@@ -80,7 +107,7 @@ export default function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home data={categorias} dispatch={dispatch} nuevoP={nuevoP} setNuevoP={setNuevoP} nuevoT={nuevoT} setNuevoT={setNuevoT} newProjectEl={newProjectEl} />} />
+        <Route path="/" element={<Home data={categorias} dispatch={dispatch} nuevoP={nuevoP} setNuevoP={setNuevoP} nuevoT={nuevoT} setNuevoT={setNuevoT} newProjectEl={newProjectEl} diaActual={diaActual} />} />
         <Route path="/projects">
           <Route path=":id" element={<Project data={categorias} dispatch={dispatch} nuevoSubP={nuevoSubP} setNuevoSubP={setNuevoSubP} setIdP={setIdP} />} />
         </Route>
@@ -100,7 +127,8 @@ const DATA = [
     subcategorias: [
       {
         nombreSubcat: 'Tesis',
-        idSubcat: uuidv4()
+        idSubcat: uuidv4(),
+        diasCheckeados: ["15-1-2024", "23-1-2024", "3-2-2024"]
       }
     ]
   },
@@ -111,11 +139,13 @@ const DATA = [
     tipo: 'crecimiento',
     subcategorias: [{
       nombreSubcat: 'React',
-      idSubcat: uuidv4()
+      idSubcat: uuidv4(),
+      diasCheckeados: ["18-1-2024", "3-2-2024", "7-2-2024"]
     },
     {
       nombreSubcat: 'Liferay',
-      idSubcat: uuidv4()
+      idSubcat: uuidv4(),
+      diasCheckeados: ["15-1-2024"]
     }
     ]
   }
