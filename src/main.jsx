@@ -8,6 +8,7 @@ import Home from "./components/pages/Home"
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Project from './components/ProjectCard'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/project-tracker-app/",
         element: <Home />,
+      },
+      {
+        path: "/projects/",
+        element: <Project />,
       },
     ],
   },
