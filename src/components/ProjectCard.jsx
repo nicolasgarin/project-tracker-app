@@ -23,7 +23,7 @@ export default function Project({ project, dispatch }) {
                         </div>
 
                         <div className='buttons'>
-                            <Link to={`/projects/${project.id}`}><button className='btn btn-celeste'>Ver proyecto</button></Link>
+                            <Link to={`/project-tracker-app/projects/${project.id}`}><button className='btn btn-celeste'>Ver proyecto</button></Link>
                             {//<button onClick={() => dispatch({ tipo: ACCIONES.CHECKEAR_PROYECTO, payload: { id: project.id } })} className='btn btn-celeste mb-3 mt-3'>Toggle Check</button>
                             }
                             <button onClick={() => dispatch({ tipo: ACCIONES.BORRAR_PROYECTO, payload: { id: project.id } })} className='btn btn-delete'>Borrar</button>
