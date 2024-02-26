@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/projects/",
+        path: "/project-tracker-app/projects/",
         element: <Project />,
       },
     ],
