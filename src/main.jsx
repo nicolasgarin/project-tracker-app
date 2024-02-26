@@ -11,11 +11,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const router = createBrowserRouter([
   {
-    path: "/project-tracker/",
+    path: "/project-tracker-app/",
     element: <App />,
     children: [
       {
-        path: "/project-tracker/",
+        path: "/project-tracker-app/",
         element: <Home />,
       },
     ],
