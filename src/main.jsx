@@ -19,10 +19,6 @@ const router = createBrowserRouter([
         path: "/project-tracker-app/",
         element: <Home />,
       },
-      {
-        path: "/project-tracker-app/projects/",
-        element: <Project />,
-      },
     ],
   },
 ]);
