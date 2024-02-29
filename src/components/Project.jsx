@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom"
 import { ACCIONES } from '../App'
 
-export default function Project({ data, nuevoSubP, setNuevoSubP, dispatch }) {
+export default function Project({ data, nuevoSubP, setNuevoSubP, dispatch, diaActual }) {
   const { id } = useParams()
   const [proyecto, setProyecto] = useState(data.filter(proyecto => proyecto.id == id)[0])
   const [idSubP, setIdSubP] = useState()
@@ -35,6 +35,16 @@ export default function Project({ data, nuevoSubP, setNuevoSubP, dispatch }) {
             {proyecto.subcategorias.map(subcat => {
               return <div className='subcat d-flex align-items-center mb-2'>
                 <div id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}{subcat.diasCheckeados.map(dia=>{return <div>{dia}</div>})}</div>
+                <input
+                      checked={subcat.diasCheckeados.includes(diaActual)}
+                      onClick={() =>
+                        dispatch({
+                          tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
+                          payload: { id: proyecto.id, idSubP: subcat.idSubcat },
+                        })
+                      }
+                      type="checkbox"
+                    ></input>
                 <button onClick={() => dispatch({ tipo: ACCIONES.BORRAR_SUBPROYECTO, payload: { id: id, idSubP: subcat.idSubcat } })} className='btn btn-delete'>Borrar</button>
               </div>
             })}
