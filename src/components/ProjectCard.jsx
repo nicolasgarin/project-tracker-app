@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { BsHeartPulseFill } from 'react-icons/bs';
 import { FaBrain, FaPaintBrush } from 'react-icons/fa';
 
-export default function Project({ project, dispatch }) {
+export default function ProjectCard({ project, dispatch, diaActual }) {
     return (
         <>
             <div className='col-3'>
@@ -18,7 +18,7 @@ export default function Project({ project, dispatch }) {
                     <div className='card-body'>
                         <div className='subcat'>
                             {project.subcategorias.map(subcat => {
-                                return <div className='' id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}<input type='checkbox'></input></div>
+                                return <div className='' id={subcat.idSubcat} key={subcat.idSubcat}>{subcat.nombreSubcat}<input checked={subcat.diasCheckeados.includes(diaActual)} onClick={() => dispatch({ tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO, payload: { id: project.id, idSubP: subcat.idSubcat } })}  type='checkbox'></input></div>
                             })}
                         </div>
 
