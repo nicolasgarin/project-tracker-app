@@ -10,7 +10,7 @@ const objDate = new Date();
 const year = objDate.getFullYear();
 const month = objDate.getMonth() + 1;
 const day = objDate.getDate();
-const diaActual = day + "-" + month + "-" + year;
+const diaActual = year + "-" + month + "-" + day;
 
 export const ACCIONES = {
   AGREGAR_PROYECTO: "agregar-proyecto",
@@ -188,7 +188,7 @@ const DATA = [
       {
         nombreSubcat: "Tesis",
         idSubcat: uuidv4(),
-        diasCheckeados: ["15-1-2024", "23-1-2024", "3-2-2024"],
+        diasCheckeados: ["2024-1-15", "2024-1-23", "2024-2-3"],
       },
     ],
   },
@@ -201,12 +201,12 @@ const DATA = [
       {
         nombreSubcat: "React",
         idSubcat: uuidv4(),
-        diasCheckeados: ["18-1-2024", "3-2-2024", "7-2-2024"],
+        diasCheckeados: ["2024-1-18", "2024-2-3", "2024-2-7"],
       },
       {
         nombreSubcat: "Liferay",
         idSubcat: uuidv4(),
-        diasCheckeados: ["15-1-2024"],
+        diasCheckeados: ["2024-1-15"],
       },
     ],
   },

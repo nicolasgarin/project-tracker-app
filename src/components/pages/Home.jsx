@@ -35,7 +35,7 @@ export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNue
           <h2 className='titulo'>Proyectos</h2>
           <ProjectList projects={data} dispatch={dispatch} diaActual={diaActual} />
           <h2 className='titulo'>Progresión</h2>
-          <h3>Project progress list</h3>
+          <ProjectProgressList projects={data} />
         </div>
       </div>
     </>
