@@ -188,7 +188,7 @@ const DATA = [
       {
         nombreSubcat: "Tesis",
         idSubcat: uuidv4(),
-        diasCheckeados: ["2024-1-15", "2024-1-23", "2024-2-3"],
+        diasCheckeados: ["2024-1-15", "2024-1-23", "2024-2-3", "2024-3-1"],
       },
     ],
   },
@@ -201,7 +201,7 @@ const DATA = [
       {
         nombreSubcat: "React",
         idSubcat: uuidv4(),
-        diasCheckeados: ["2024-1-18", "2024-2-3", "2024-2-7"],
+        diasCheckeados: ["2024-1-18", "2024-2-3", "2024-2-7", "2024-3-1"],
       },
       {
         nombreSubcat: "Liferay",
