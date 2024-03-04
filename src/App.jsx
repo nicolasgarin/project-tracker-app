@@ -170,3 +170,37 @@ export default function App() {
     </>
   );
 }
+
+const DATA = [
+  {
+    nombre: "EF",
+    id: uuidv4(),
+    checkeado: false,
+    tipo: "salud",
+    subcategorias: [
+      {
+        nombreSubcat: "Tesis",
+        idSubcat: uuidv4(),
+        diasCheckeados: ["2024-1-15", "2024-1-23", "2024-2-3", "2024-3-1"],
+      },
+    ],
+  },
+  {
+    nombre: "Programación",
+    id: uuidv4(),
+    checkeado: false,
+    tipo: "crecimiento",
+    subcategorias: [
+      {
+        nombreSubcat: "React",
+        idSubcat: uuidv4(),
+        diasCheckeados: ["2024-1-18", "2024-2-3", "2024-2-7", "2024-3-1"],
+      },
+      {
+        nombreSubcat: "Liferay",
+        idSubcat: uuidv4(),
+        diasCheckeados: ["2024-1-15"],
+      },
+    ],
+  },
+];
