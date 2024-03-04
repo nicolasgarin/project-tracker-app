@@ -114,12 +114,26 @@ footer {
     width: 150px;
   }
 
+  .fila-card {
+    gap: 30px;
+  }
+
   .celda {
     height: 27px;
     width: 27px;
     border-radius: 3px;
     background-color: $blanco;
     border: 1px solid $gris-claro;
+    &.celda-check {
+      height: 15px;
+      width: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &.checkeada {
+      background-color: $verde;
+    }
   }
 
   .num {

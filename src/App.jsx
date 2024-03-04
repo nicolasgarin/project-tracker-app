@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import { DATA, useData } from "./context/DataContext";
 import { useReducer, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Home from "./components/pages/Home";
@@ -14,7 +15,6 @@ const diaActual = year + "-" + month + "-" + day;
 
 export const ACCIONES = {
   AGREGAR_PROYECTO: "agregar-proyecto",
-  CHECKEAR_PROYECTO: "checkear-proyecto",
   BORRAR_PROYECTO: "borrar-proyecto",
   AGREGAR_SUBPROYECTO: "agregar-subproyecto",
   BORRAR_SUBPROYECTO: "borrar-subproyecto",
@@ -28,14 +28,6 @@ function reducer(categorias, accion) {
         ...categorias,
         nuevoProyecto(accion.payload.nombre, accion.payload.tipo),
       ];
-    case ACCIONES.CHECKEAR_PROYECTO:
-      return categorias.map((categoria) => {
-        if (categoria.id === accion.payload.id) {
-          return { ...categoria, checkeado: !categoria.checkeado };
-        } else {
-          return categoria;
-        }
-      });
     case ACCIONES.BORRAR_PROYECTO:
       return categorias.filter(
         (categoria) => categoria.id !== accion.payload.id
@@ -129,6 +121,7 @@ function actualizarSubProyecto(idP, idSubP, categorias) {
 }
 
 export default function App() {
+  const { data } = useData();
   const [categorias, dispatch] = useReducer(reducer, DATA);
   const [nuevoP, setNuevoP] = useState("");
   const [nuevoT, setNuevoT] = useState("");
@@ -177,37 +170,3 @@ export default function App() {
     </>
   );
 }
-
-const DATA = [
-  {
-    nombre: "EF",
-    id: uuidv4(),
-    checkeado: false,
-    tipo: "salud",
-    subcategorias: [
-      {
-        nombreSubcat: "Tesis",
-        idSubcat: uuidv4(),
-        diasCheckeados: ["2024-1-15", "2024-1-23", "2024-2-3"],
-      },
-    ],
-  },
-  {
-    nombre: "Programación",
-    id: uuidv4(),
-    checkeado: false,
-    tipo: "crecimiento",
-    subcategorias: [
-      {
-        nombreSubcat: "React",
-        idSubcat: uuidv4(),
-        diasCheckeados: ["2024-1-18", "2024-2-3", "2024-2-7"],
-      },
-      {
-        nombreSubcat: "Liferay",
-        idSubcat: uuidv4(),
-        diasCheckeados: ["2024-1-15"],
-      },
-    ],
-  },
-];

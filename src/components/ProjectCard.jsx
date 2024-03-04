@@ -25,18 +25,21 @@ export default function ProjectCard({ project, dispatch, diaActual }) {
             <div className="subcat">
               {project.subcategorias.map((subcat) => {
                 return (
-                  <div className="" id={subcat.idSubcat} key={subcat.idSubcat}>
+                  <div className="fila-card d-flex align-items-center" id={subcat.idSubcat} key={subcat.idSubcat}>
                     {subcat.nombreSubcat}
-                    <input
-                      checked={subcat.diasCheckeados.includes(diaActual)}
+                    <div
+                      className={`celda celda-check ${
+                        subcat.diasCheckeados.includes(diaActual)
+                          ? "checkeada"
+                          : null
+                      }`}
                       onClick={() =>
                         dispatch({
                           tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
                           payload: { id: project.id, idSubP: subcat.idSubcat },
                         })
                       }
-                      type="checkbox"
-                    ></input>
+                    ></div>
                   </div>
                 );
               })}
