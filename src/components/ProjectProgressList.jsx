@@ -46,11 +46,21 @@ export default function ProjectProgressList({ data }) {
   }
 
   function prevMonth() {
-    setMonth(month - 1);
+    if (month == 1) {
+      setYear(parseInt(year) - 1);
+      setMonth(12);
+    } else {
+      setMonth(month - 1);
+    }
   }
 
   function nextMonth() {
-    setMonth(month + 1);
+    if (month == 12) {
+      setYear(parseInt(year) + 1);
+      setMonth(1);
+    } else {
+      setMonth(month + 1);
+    }
   }
 
   function getMonthName(monthNumber) {
@@ -75,7 +85,10 @@ export default function ProjectProgressList({ data }) {
         <button
           className="btn btn-celeste"
           onClick={prevMonth}
-          disabled={month == 1}
+          disabled={
+            month == 1 &&
+            !availableYears.includes((parseInt(year) - 1).toString())
+          }
         >
           Mes anterior
         </button>
@@ -83,11 +96,7 @@ export default function ProjectProgressList({ data }) {
         <button
           className="btn btn-celeste"
           onClick={nextMonth}
-          disabled={
-            month == 12 ||
-            (month == dateActual.getMonth() + 1 &&
-              year == dateActual.getFullYear())
-          }
+          disabled={(month == dateActual.getMonth()+1 && year == dateActual.getFullYear())}
         >
           Mes próximo
         </button>
