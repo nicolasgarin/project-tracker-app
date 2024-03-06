@@ -27,7 +27,7 @@ export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNue
             <option value="crecimiento">Crecimiento</option>
             <option value="esparcimiento">Esparcimiento</option>
           </select>
-          <button type="submit" className="btn btn-delete">Crear</button>
+          <button type="submit" className="btn btn-violeta">Crear</button>
         </div>
       </form>
       <div className='main'>
