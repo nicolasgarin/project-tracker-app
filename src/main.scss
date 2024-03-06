@@ -1,3 +1,12 @@
 @import 'variables.scss';
 @import "./styles/components.scss";
 @import "./styles/sections.scss";
+
+//@font-face {
+//    font-family: "Dangrek";
+//    src: local("Dangrek"), url("./assets/fonts/Dangrek-Regular.ttf");
+//}
+
+* {
+    font-family: Rubik, sans-serif;
+}
