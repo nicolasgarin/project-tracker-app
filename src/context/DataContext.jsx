@@ -33,46 +33,101 @@ export const DataProvider = ({ children }) => {
 export const useData = () => useContext(DataContext);
 
 export const DATA = [
-    {
-      nombre: "EF",
-      id: "fdgfdfg",
-      tipo: "salud",
-      subcategorias: [
-        {
-          nombreSubcat: "Tesis",
-          idSubcat: "dfajkb",
-          diasCheckeados: [
-            "2024-1-15",
-            "2024-1-23",
-            "2024-2-3",
-            "2024-3-1",
-            "2024-3-2",
-          ],
-        },
-      ],
-    },
-    {
-      nombre: "Programación",
-      id: "adkjfla",
-      tipo: "crecimiento",
-      subcategorias: [
-        {
-          nombreSubcat: "React",
-          idSubcat: "lkfjsda",
-          diasCheckeados: ["2023-12-16", "2024-1-18", "2024-2-3", "2024-2-7"],
-        },
-        {
-          nombreSubcat: "Liferay",
-          idSubcat: "aflñdsj",
-          diasCheckeados: [
-            "2024-1-6",
-            "2024-1-11",
-            "2024-1-13",
-            "2024-1-18",
-            "2024-3-1",
-          ],
-        },
-      ],
-    },
-  ];
+  {
+    nombre: "EF",
+    id: "ukjsdf21sdds",
+    tipo: "salud",
+    subcategorias: [
+      {
+        nombreSubcat: "Tesis",
+        idSubcat: "sdf1sdf2",
+        diasCheckeados: [
+          {
+            date: "2024-1-15",
+            status: 1
+          },
+          {
+            date: "2024-1-23",
+            status: 1
+          },
+          {
+            date: "2024-2-3",
+            status: 0
+          },
+          {
+            date: "2024-3-1",
+            status: 1
+          },
+          {
+            date: "2024-3-2",
+            satus: 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    nombre: "Programación",
+    id: "adkj4s5la",
+    tipo: "crecimiento",
+    subcategorias: [
+      {
+        nombreSubcat: "React",
+        idSubcat: "dsfdfs1ew",
+        diasCheckeados: [
+          {
+            date: "2023-12-16",
+            status: 0
+          },
+          {
+            date: "2024-1-18",
+            status: 1
+          },
+          {
+            date: "2024-2-3",
+            status: 0
+          },
+          {
+            date: "2024-2-7",
+            status: 2
+          }
+        ]
+      },
+      {
+        nombreSubcat: "Liferay",
+        idSubcat: "wew2sd",
+        diasCheckeados: [
+          {
+            date: "2024-1-6",
+            status: 1
+          },
+          {
+            date: "2024-1-11",
+            status: 0
+          },
+          {
+            date: "2024-1-13",
+            status: 3
+          },
+          {
+            date: "2024-1-18",
+            status: 1
+          },
+          {
+            date: "2024-3-1",
+            status: 2
+          },
+            {
+            date: "2024-3-3",
+            status: 0
+          },
+            {
+            date: "2024-3-4",
+            status: 1
+          }
+        ]
+      }
+    ]
+  }
+]
 

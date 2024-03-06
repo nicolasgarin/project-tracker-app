@@ -25,13 +25,33 @@ export default function ProjectCard({ project, dispatch, diaActual }) {
             <div className="subcat">
               {project.subcategorias.map((subcat) => {
                 return (
-                  <div className="fila-card d-flex align-items-center" id={subcat.idSubcat} key={subcat.idSubcat}>
+                  <div
+                    className="fila-card d-flex align-items-center"
+                    id={subcat.idSubcat}
+                    key={subcat.idSubcat}
+                  >
                     {subcat.nombreSubcat}
                     <div
                       className={`celda celda-check ${
-                        subcat.diasCheckeados.includes(diaActual)
-                          ? "checkeada"
-                          : null
+                        subcat.diasCheckeados.filter(
+                          (dia) => dia.date == diaActual
+                        ).length > 0
+                          ? subcat.diasCheckeados.filter(
+                              (dia) => dia.date == diaActual && dia.status == 0
+                            ).length > 0
+                            ? "check-1"
+                            : subcat.diasCheckeados.filter(
+                                (dia) =>
+                                  dia.date == diaActual && dia.status == 1
+                              ).length > 0
+                            ? "check-2"
+                            : subcat.diasCheckeados.filter(
+                                (dia) =>
+                                  dia.date == diaActual && dia.status == 2
+                              ).length > 0
+                            ? "check-3"
+                            : "check-4"
+                          : ""
                       }`}
                       onClick={() =>
                         dispatch({

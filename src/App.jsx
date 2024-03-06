@@ -105,9 +105,39 @@ function actualizarSubProyecto(idP, idSubP, categorias) {
           if (subcat.idSubcat === idSubP) {
             return {
               ...subcat,
-              diasCheckeados: subcat.diasCheckeados.includes(diaActual)
-                ? subcat.diasCheckeados.filter((dia) => dia !== diaActual)
-                : [...subcat.diasCheckeados, diaActual],
+              diasCheckeados:
+                subcat.diasCheckeados.filter((dia) => dia.date == diaActual).length > 0
+                  ? subcat.diasCheckeados.filter(
+                      (dia) => dia.date == diaActual && dia.status == 0
+                    ).length > 0
+                    ? [
+                        ...subcat.diasCheckeados.filter(
+                          (dia) => dia.date != diaActual
+                        ),
+                        { date: diaActual, status: 1 },
+                      ]
+                    : subcat.diasCheckeados.filter(
+                        (dia) => dia.date == diaActual && dia.status == 1
+                      ).length > 0
+                    ? [
+                        ...subcat.diasCheckeados.filter(
+                          (dia) => dia.date != diaActual
+                        ),
+                        { date: diaActual, status: 2 },
+                      ]
+                    : subcat.diasCheckeados.filter(
+                        (dia) => dia.date == diaActual && dia.status == 2
+                      ).length > 0
+                    ? [
+                        ...subcat.diasCheckeados.filter(
+                          (dia) => dia.date != diaActual
+                        ),
+                        { date: diaActual, status: 3 },
+                      ]
+                    : subcat.diasCheckeados.filter(
+                        (dia) => dia.date != diaActual
+                      )
+                  : [...subcat.diasCheckeados, { date: diaActual, status: 0 }],
             };
           } else {
             return subcat;

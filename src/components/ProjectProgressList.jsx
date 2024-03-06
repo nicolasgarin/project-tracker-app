@@ -29,8 +29,8 @@ export default function ProjectProgressList({ data }) {
   data.map((categoria) => {
     categoria.subcategorias.map((subcat) => {
       subcat.diasCheckeados.map((dia) => {
-        if (!availableYears.includes(dia.split("-")[0])) {
-          availableYears.push(dia.split("-")[0]);
+        if (!availableYears.includes(dia.date.split("-")[0])) {
+          availableYears.push(dia.date.split("-")[0]);
         }
       });
     });
@@ -112,9 +112,9 @@ export default function ProjectProgressList({ data }) {
           let diasArray = [];
           categoria.subcategorias.map((subcat) => {
             subcat.diasCheckeados.map((dia) => {
-              if (dia.split("-")[0] == year) {
-                if (dia.split("-")[1] == month) {
-                  diasArray.push(dia.split("-")[2]);
+              if (dia.date.split("-")[0] == year) {
+                if (dia.date.split("-")[1] == month) {
+                  diasArray.push(dia.date.split("-")[2]);
                 }
               }
             });

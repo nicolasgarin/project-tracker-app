@@ -131,8 +131,17 @@ footer {
         cursor: pointer;
       }
     }
-    &.checkeada {
+    &.check-1 {
       background-color: $verde;
+    }
+    &.check-2 {
+      background-color: $verde-2;
+    }
+    &.check-3 {
+      background-color: $verde-3;
+    }
+    &.check-4 {
+      background-color: $amarillo;
     }
   }
 
