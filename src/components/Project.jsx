@@ -47,7 +47,7 @@ export default function Project({
                   onChange={(e) => setNuevoSubP(e.target.value)}
                   id="item"
                 />
-                <button type="submit" className="btn btn-delete">
+                <button type="submit" className="btn btn-violeta">
                   Crear
                 </button>
               </div>
@@ -56,6 +56,8 @@ export default function Project({
           <div className="subcat-list">
             {proyecto.subcategorias.map((subcat) => {
               return (
+                <div className="row">
+                  <div className="section-info col-2">
                 <div className="subcat d-flex align-items-center mb-2">
                   <div id={subcat.idSubcat} key={subcat.idSubcat}>
                     {subcat.nombreSubcat}
@@ -84,6 +86,10 @@ export default function Project({
                   >
                     x
                   </button>
+                  </div>
+                  <div className="section-celdas col-10">
+                  </div>
+                </div>
                 </div>
               );
             })}
