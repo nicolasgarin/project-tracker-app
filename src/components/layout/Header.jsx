@@ -7,7 +7,7 @@ export default function Header() {
     const { theme, toggleTheme } = useUserOptions()
     
     return (
-        <header className='header'>
+        <header className={`header ${theme}`}>
             <div className='container d-flex align-items-center'>
                 <img src={logo} className='logo' alt='project tracker logo' />
                 <h1 className='titulo-header'>Project Tracker</h1>
