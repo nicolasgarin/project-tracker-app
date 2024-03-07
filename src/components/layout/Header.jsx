@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../assets/logo-celeste-solo-circulo.svg'
-import { useUserOptions } from '../context/UserOptionsContext';
 import { IoMoon, IoSunny } from "react-icons/io5";
+import { useUserOptions } from '../../context/UserOptionsContext';
 
 export default function Header() {
     const { theme, toggleTheme } = useUserOptions()

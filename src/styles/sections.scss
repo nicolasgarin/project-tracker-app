@@ -61,6 +61,10 @@ footer {
 
   .nombre-fila {
     width: 150px;
+    margin-bottom: 5px;
+    .tabla-dias {
+      gap: 2px;
+    }
   }
 
   .fila-card {
@@ -68,9 +72,10 @@ footer {
   }
 
   .celda {
-    height: 27px;
-    width: 27px;
-    border-radius: 4px;
+    height: 30px;
+    width: 30px;
+    border-radius: 8px;
+    border: 1px solid $gris-claro;
     background-color: $blanco;
 
     &.celda-check {

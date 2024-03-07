@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ACCIONES } from "../App";
+import SubprojectProgressList from "./SubprojectProgressList";
 
 export default function Project({
   data,
@@ -88,6 +89,7 @@ export default function Project({
                   </button>
                   </div>
                   <div className="section-celdas col-10">
+                    <SubprojectProgressList subcat={subcat} />
                   </div>
                 </div>
                 </div>

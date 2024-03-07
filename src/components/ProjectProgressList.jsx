@@ -96,7 +96,10 @@ export default function ProjectProgressList({ data }) {
         <button
           className="btn btn-celeste"
           onClick={nextMonth}
-          disabled={(month == dateActual.getMonth()+1 && year == dateActual.getFullYear())}
+          disabled={
+            month == dateActual.getMonth() + 1 &&
+            year == dateActual.getFullYear()
+          }
         >
           Mes próximo
         </button>
@@ -114,7 +117,7 @@ export default function ProjectProgressList({ data }) {
             subcat.diasCheckeados.map((dia) => {
               if (dia.date.split("-")[0] == year) {
                 if (dia.date.split("-")[1] == month) {
-                  diasArray.push(dia.date.split("-")[2]);
+                  diasArray.push(dia);
                 }
               }
             });
@@ -122,11 +125,29 @@ export default function ProjectProgressList({ data }) {
 
           let celdasP = [];
           for (let i = 1; i <= cantDias; i++) {
-            if (diasArray.includes(i.toString())) {
-              celdasP.push(<div key={i} className={"celda checkeada"}></div>);
-            } else {
-              celdasP.push(<div key={i} className={"celda"}></div>);
-            }
+            diasArray.filter((dia) => dia.date.split("-")[2] == i.toString())
+              .length > 0
+              ? celdasP.push(
+                  <div
+                    key={i}
+                    className={`celda ${
+                      diasArray.filter(
+                        (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 0
+                      ).length > 0
+                        ? "check-1"
+                        : diasArray.filter(
+                            (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 1
+                          ).length > 0
+                        ? "check-2"
+                        : diasArray.filter(
+                            (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 2
+                          ).length > 0
+                        ? "check-3"
+                        : "check-4"
+                    }`}
+                  ></div>
+                )
+              : celdasP.push(<div key={i} className={"celda"}></div>);
           }
 
           return (
