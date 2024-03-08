@@ -77,7 +77,7 @@ export default function ProjectProgressList({ data }) {
     <div className="card-container">
       <div className="dateSetter d-flex">
         <select name="year" id="year" value={year} onChange={handleYear}>
-          {availableYears.map((year) => {
+          {availableYears.sort().reverse().map((year) => {
             return <option value={year}>{year}</option>;
           })}
         </select>
