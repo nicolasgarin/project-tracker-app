@@ -18,10 +18,10 @@
   border-radius: 8px;
 
   &.btn-violeta {
-    background-color: $violeta-2;
+    background-color: $violeta-3;
     color: $gris-claro !important;
     &:hover {
-      background-color: $violeta-2-dark;
+      background-color: $violeta-4;
     }
   }
 
@@ -29,7 +29,7 @@
     background-color: $celeste;
     color: $gris-claro;
     &:hover {
-      background-color: $celeste-dark;
+      background-color: $celeste-2;
     }
   }
 
@@ -59,7 +59,7 @@
   margin-bottom: 30px;
 
   .card-header {
-    background-color: $violeta !important;
+    background-color: $violeta-3 !important;
     padding: 10px 15px;
 
     .title {
@@ -69,7 +69,7 @@
   }
 
   .card-body {
-    background-color: $celeste-2 !important;
+    background-color: $celeste-3 !important;
     padding: 15px;
     border-radius: 0px 0px 8px 8px;
     color: $gris-claro;
@@ -89,7 +89,7 @@
 }
 
 .form-nuevo {
-  background-color: $celeste-2;
+  background-color: $celeste-3;
   border-bottom: 1px solid $negro;
   color: $gris-claro;
   padding: 10px 0;
@@ -133,7 +133,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $celeste-2;
+    background-color: $celeste-3;
     -webkit-transition: .4s;
     transition: .4s;
 }
