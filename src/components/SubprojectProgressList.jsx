@@ -32,6 +32,7 @@ export default function SubprojectProgressList({ project }) {
 
   function handleYear(event) {
     setYear(event.target.value);
+    setMonth(1);
   }
 
   function prevMonth() {
