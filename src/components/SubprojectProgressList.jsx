@@ -131,7 +131,6 @@ export default function SubprojectProgressList({ subcat }) {
             }
           >
             Next month
-            {console.log(dateActual.getMonth() + 1)}
           </button>
         </div>
 
