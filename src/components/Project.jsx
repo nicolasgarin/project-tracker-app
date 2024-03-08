@@ -65,9 +65,25 @@ export default function Project({
                   </div>
                   <div
                     className={`celda celda-check ${
-                      subcat.diasCheckeados.includes(diaActual)
-                        ? "checkeada"
-                        : null
+                      subcat.diasCheckeados.filter(
+                        (dia) => dia.date == diaActual
+                      ).length > 0
+                        ? subcat.diasCheckeados.filter(
+                            (dia) => dia.date == diaActual && dia.status == 0
+                          ).length > 0
+                          ? "check-1"
+                          : subcat.diasCheckeados.filter(
+                              (dia) =>
+                                dia.date == diaActual && dia.status == 1
+                            ).length > 0
+                          ? "check-2"
+                          : subcat.diasCheckeados.filter(
+                              (dia) =>
+                                dia.date == diaActual && dia.status == 2
+                            ).length > 0
+                          ? "check-3"
+                          : "check-4"
+                        : ""
                     }`}
                     onClick={() =>
                       dispatch({
