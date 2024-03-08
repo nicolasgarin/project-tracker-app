@@ -1,0 +1,24 @@
+//HEADER
+.header.dark {
+    background-color: $celeste;
+    color: $violeta-2;
+
+    .logo {
+        color: $celeste;
+    }
+
+    .switch-container {
+        svg {
+            color: $violeta;
+        }
+    }
+}
+
+//FOOTER
+footer.dark {
+    background-color: $celeste;
+
+    .texto-footer {
+        color: $violeta-2;
+    }
+}
