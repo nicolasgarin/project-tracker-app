@@ -6,7 +6,9 @@ export default function SubprojectProgressList({ subcat }) {
   const [month, setMonth] = useState(dateActual.getMonth() + 1);
   const [cantDias, setCantDias] = useState(new Date(year, month, 0).getDate());
   var celdasMes = [];
+  var celdasP = [];
   var availableYears = [];
+  let diasArray = [];
 
   useEffect(() => {
     updateCantDias();
@@ -22,10 +24,6 @@ export default function SubprojectProgressList({ subcat }) {
     if (!availableYears.includes(dia.date.split("-")[0])) {
       availableYears.push(dia.date.split("-")[0]);
     }
-  });
-
-  let diasArray = [];
-  subcat.diasCheckeados.map((dia) => {
     if (dia.date.split("-")[0] == year) {
       if (dia.date.split("-")[1] == month) {
         diasArray.push(dia);
@@ -33,7 +31,6 @@ export default function SubprojectProgressList({ subcat }) {
     }
   });
 
-  var celdasP = [];
   for (let i = 1; i <= cantDias; i++) {
     diasArray.filter((dia) => dia.date.split("-")[2] == i.toString()).length > 0
       ? celdasP.push(
@@ -138,6 +135,7 @@ export default function SubprojectProgressList({ subcat }) {
           </div>
           <div>
             <div className="tabla-dias d-flex">{celdasMes}</div>
+            {(subcat) => {}}
             <div className="prog-table-item d-flex align-items-center">
               <div className="nombre-fila">{subcat.nombreSubcat}</div>
               <div className="tabla-dias d-flex">{celdasP}</div>
