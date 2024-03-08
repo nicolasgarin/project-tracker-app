@@ -133,11 +133,15 @@ export default function ProjectProgressList({ data }) {
                     className={`celda ${
                       diasArray.filter(
                         (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 0
-                      ).length > 0
+                      ).length > 0 && diasArray.filter(
+                        (dia) => dia.date.split("-")[2] == i.toString() && (dia.status == 1 || dia.status == 2)
+                      ).length == 0
                         ? "check-1"
                         : diasArray.filter(
                             (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 1
-                          ).length > 0
+                          ).length > 0 && diasArray.filter(
+                            (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 2
+                          ).length == 0
                         ? "check-2"
                         : diasArray.filter(
                             (dia) => dia.date.split("-")[2] == i.toString() && dia.status == 2
@@ -162,4 +166,4 @@ export default function ProjectProgressList({ data }) {
       )}
     </div>
   );
-}
+}B
