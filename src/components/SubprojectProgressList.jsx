@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-export default function SubprojectProgressList({ subcat }) {
+export default function SubprojectProgressList({ project }) {
   const dateActual = new Date();
   const [year, setYear] = useState(dateActual.getFullYear());
   const [month, setMonth] = useState(dateActual.getMonth() + 1);
   const [cantDias, setCantDias] = useState(new Date(year, month, 0).getDate());
   var celdasMes = [];
-  var celdasP = [];
   var availableYears = [];
-  let diasArray = [];
 
   useEffect(() => {
     updateCantDias();
@@ -20,44 +18,13 @@ export default function SubprojectProgressList({ subcat }) {
     );
   }
 
-  subcat.diasCheckeados.map((dia) => {
-    if (!availableYears.includes(dia.date.split("-")[0])) {
-      availableYears.push(dia.date.split("-")[0]);
-    }
-    if (dia.date.split("-")[0] == year) {
-      if (dia.date.split("-")[1] == month) {
-        diasArray.push(dia);
+  project.subcategorias.map((subcat) => {
+    subcat.diasCheckeados.map((dia) => {
+      if (!availableYears.includes(dia.date.split("-")[0])) {
+        availableYears.push(dia.date.split("-")[0]);
       }
-    }
+    });
   });
-
-  for (let i = 1; i <= cantDias; i++) {
-    diasArray.filter((dia) => dia.date.split("-")[2] == i.toString()).length > 0
-      ? celdasP.push(
-          <div
-            key={i}
-            className={`celda ${
-              diasArray.filter(
-                (dia) =>
-                  dia.date.split("-")[2] == i.toString() && dia.status == 0
-              ).length > 0
-                ? "check-1"
-                : diasArray.filter(
-                    (dia) =>
-                      dia.date.split("-")[2] == i.toString() && dia.status == 1
-                  ).length > 0
-                ? "check-2"
-                : diasArray.filter(
-                    (dia) =>
-                      dia.date.split("-")[2] == i.toString() && dia.status == 2
-                  ).length > 0
-                ? "check-3"
-                : "check-4"
-            }`}
-          ></div>
-        )
-      : celdasP.push(<div key={i} className={"celda"}></div>);
-  }
 
   function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
@@ -102,7 +69,7 @@ export default function SubprojectProgressList({ subcat }) {
   return (
     <>
       <p>Calendario Subproyecto</p>
-      <p>{subcat.nombreSubcat}</p>
+      <p>{project.nombre}</p>
       <div className="card-container">
         <div className="dateSetter d-flex">
           <select name="year" id="year" value={year} onChange={handleYear}>
@@ -140,11 +107,57 @@ export default function SubprojectProgressList({ subcat }) {
           </div>
           <div>
             <div className="tabla-dias d-flex">{celdasMes}</div>
-            {(subcat) => {}}
-            <div className="prog-table-item d-flex align-items-center">
-              <div className="nombre-fila">{subcat.nombreSubcat}</div>
-              <div className="tabla-dias d-flex">{celdasP}</div>
-            </div>
+            {project.subcategorias.map((subcat) => {
+              let diasArray = [];
+              subcat.diasCheckeados.map((dia) => {
+                if (dia.date.split("-")[0] == year) {
+                  if (dia.date.split("-")[1] == month) {
+                    diasArray.push(dia);
+                  }
+                }
+              });
+
+              var celdasP = [];
+              for (let i = 1; i <= cantDias; i++) {
+                diasArray.filter(
+                  (dia) => dia.date.split("-")[2] == i.toString()
+                ).length > 0
+                  ? celdasP.push(
+                      <div
+                        key={i}
+                        className={`celda ${
+                          diasArray.filter(
+                            (dia) =>
+                              dia.date.split("-")[2] == i.toString() &&
+                              dia.status == 0
+                          ).length > 0
+                            ? "check-1"
+                            : diasArray.filter(
+                                (dia) =>
+                                  dia.date.split("-")[2] == i.toString() &&
+                                  dia.status == 1
+                              ).length > 0
+                            ? "check-2"
+                            : diasArray.filter(
+                                (dia) =>
+                                  dia.date.split("-")[2] == i.toString() &&
+                                  dia.status == 2
+                              ).length > 0
+                            ? "check-3"
+                            : "check-4"
+                        }`}
+                      ></div>
+                    )
+                  : celdasP.push(<div key={i} className={"celda"}></div>);
+              }
+
+              return (
+                <div className="prog-table-item d-flex align-items-center">
+                  <div className="nombre-fila">{subcat.nombreSubcat}</div>
+                  <div className="tabla-dias d-flex">{celdasP}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
