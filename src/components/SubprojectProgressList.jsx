@@ -86,8 +86,13 @@ export default function SubprojectProgressList({ subcat }) {
   }
 
   function getMonthName(monthNumber) {
-    dateActual.setMonth(monthNumber - 1);
-    return dateActual.toLocaleString("es-US", { month: "long" });
+    let nameDate = new Date(
+      dateActual.getFullYear(),
+      monthNumber,
+      dateActual.getDate()
+    );
+    nameDate.setMonth(monthNumber - 1);
+    return nameDate.toLocaleString("es-US", { month: "long" });
   }
 
   function updateCantDias() {
@@ -121,11 +126,12 @@ export default function SubprojectProgressList({ subcat }) {
             className="btn btn-celeste"
             onClick={nextMonth}
             disabled={
-              month == dateActual.getMonth() + 1 &&
-              year == dateActual.getFullYear()
+              parseInt(month) == dateActual.getMonth() + 1 &&
+              parseInt(year) == dateActual.getFullYear()
             }
           >
             Next month
+            {console.log(dateActual.getMonth() + 1)}
           </button>
         </div>
 
