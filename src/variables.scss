@@ -12,6 +12,9 @@ $celeste-2: #1a97b0;
 $celeste-3: #4f8699;
 $celeste-4: #3e6876;
 
+$azul: #3c6385;
+$azul-2: #1e3052;
+
 $violeta: #b59dc5;
 $violeta-2 :#6a5e72;
 $violeta-3: #563444;
@@ -25,6 +28,7 @@ $verde-4: #2F5233;
 $amarillo: #faf87a;
 $rojo: #df7373;
 $rojo-2: #a84848;
+$rojo-3: #784444;
 
 //TAMAÑO
 
@@ -34,4 +38,16 @@ h2 {
 
 h3 {
     font-size: 1.25rem !important;
+}
+
+.texto-imp {
+    font-weight: 600;
+}
+
+.text-violeta {
+    color: $violeta-3;
+}
+
+.text-celeste {
+    color: $celeste-3;
 }

@@ -1,17 +1,14 @@
 //SECTIONS
 
 body {
-  background-color: $gris-claro !important;
+  background-image: url("https://raw.githubusercontent.com/nicolasgarin/json/main/background.png");
 }
-
 header {
-  background-color: $violeta-3;
+  background-color: $violeta-4;
   border-bottom: 1px solid black;
   padding: 20px 0;
 
   .logo {
-    height: 50px;
-    width: 50px;
     margin-right: 15px;
   }
 
@@ -22,16 +19,26 @@ header {
   .color-2 {
     color: $celeste-3;
   }
-
 }
 
 footer {
-  background-color: $violeta-3;
+  background-color: $violeta-4;
   padding: 30px 0;
-
   .texto-footer {
     color: $gris-claro;
     font-weight: 500;
+  }
+  .section-icons {
+    display: flex;
+    gap: 20px;
+    .ficon {
+      height: 24px;
+      width: 24px;
+      fill: $gris-claro;
+      &:hover {
+        fill: $blanco;
+      }
+    }
   }
 }
 
@@ -41,7 +48,6 @@ footer {
   .card-container {
     .row {
       width: 100%;
-
     }
   }
 
@@ -56,7 +62,6 @@ footer {
     color: $celeste-3;
     font-weight: 500;
     font-size: 18px;
-
   }
 
   .nombre-fila {
@@ -71,43 +76,10 @@ footer {
     gap: 30px;
   }
 
-  .celda {
-    height: 30px;
-    width: 30px;
-    border-radius: 8px;
-    border: 1px solid $gris-claro;
-    background-color: $blanco;
-
-    &.celda-check {
-      height: 15px;
-      width: 15px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    &.check-1 {
-      background-color: $verde;
-    }
-
-    &.check-2 {
-      background-color: $verde-2;
-    }
-
-    &.check-3 {
-      background-color: $verde-3;
-    }
-
-    &.check-4 {
-      background-color: $amarillo;
-    }
-  }
-
   .num {
-    background-color: $celeste-3;
+    background-color: $violeta-3;
     color: $gris-claro;
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 
@@ -123,5 +95,8 @@ footer {
         border-radius: 6px;
       }
     }
+  }
+  .section-celdas {
+    margin-top: 30px;
   }
 }

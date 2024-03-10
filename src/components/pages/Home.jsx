@@ -5,7 +5,7 @@ import { ACCIONES } from '../../App';
 import NewProject from '../NewProject';
 import ProjectProgressList from '../ProjectProgressList';
 
-export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNuevoT, newProjectEl, diaActual }) {
+export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNuevoT, newProjectEl, diaActual, cardHeights, setCardHeights }) {
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -33,7 +33,7 @@ export default function Home({ data, dispatch, nuevoP, setNuevoP, nuevoT, setNue
       <div className='main'>
         <div className='container'>
           <h2 className='titulo'>Proyectos</h2>
-          <ProjectList projects={data} dispatch={dispatch} diaActual={diaActual} />
+          <ProjectList projects={data} dispatch={dispatch} diaActual={diaActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />
           <h2 className='titulo'>Progresión</h2>
           <ProjectProgressList data={data} diaActual={diaActual}  />
         </div>

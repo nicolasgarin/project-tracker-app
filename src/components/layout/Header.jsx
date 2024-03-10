@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logo-celeste-solo-circulo.svg'
+import logo from '../../assets/logo-celeste-circulo.svg'
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useUserOptions } from '../../context/UserOptionsContext';
 
@@ -10,7 +10,6 @@ export default function Header() {
         <header className={`header ${theme}`}>
             <div className='container d-flex align-items-center'>
                 <img src={logo} className='logo' alt='project tracker logo' />
-                <h1 className='titulo-header'>Project Tracker</h1>
                 <div className='switch-container'>
                     <IoMoon />
                     <label className="switch">

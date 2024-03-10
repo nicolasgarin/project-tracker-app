@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 
 export default function SubprojectProgressList({ project }) {
   const dateActual = new Date();
@@ -69,98 +71,103 @@ export default function SubprojectProgressList({ project }) {
 
   return (
     <>
-      <p>Calendario Subproyecto</p>
-      <p>{project.nombre}</p>
-      <div className="card-container">
-        <div className="dateSetter d-flex">
-          <select name="year" id="year" value={year} onChange={handleYear}>
-            {availableYears.sort().reverse().map((year) => {
-              return <option value={year}>{year}</option>;
-            })}
+      <div className="progress-list card-container">
+        <h3 className="titulo">Progresión</h3>
+        <div className="date-setter d-flex">
+          <select
+            className="select-year"
+            name="year"
+            id="year"
+            value={year}
+            onChange={handleYear}
+          >
+            {availableYears
+              .sort()
+              .reverse()
+              .map((year) => {
+                return <option value={year}>{year}</option>;
+              })}
           </select>
-
-          <button
-            className="btn btn-celeste"
-            onClick={prevMonth}
-            disabled={
-              month == 1 &&
-              !availableYears.includes((parseInt(year) - 1).toString())
-            }
-          >
-            Prev month
-          </button>
-          <div>{capitalizeFirstLetter(getMonthName(month))}</div>
-          <button
-            className="btn btn-celeste"
-            onClick={nextMonth}
-            disabled={
-              parseInt(month) == dateActual.getMonth() + 1 &&
-              parseInt(year) == dateActual.getFullYear()
-            }
-          >
-            Next month
-          </button>
-        </div>
-
-        <div className="d-flex">
-          <div className="message nombre-fila">
-            {month} - {year}
+          <div className="month-setter d-flex align-items-center justify-content-between">
+            <button
+              className="btn btn-celeste flecha"
+              onClick={prevMonth}
+              disabled={
+                month == 1 &&
+                !availableYears.includes((parseInt(year) - 1).toString())
+              }
+            >
+              <FaAngleLeft />
+            </button>
+            <div className="texto-imp texto-violeta">
+              {capitalizeFirstLetter(getMonthName(month))}
+            </div>
+            <button
+              className="btn btn-celeste flecha"
+              onClick={nextMonth}
+              disabled={
+                parseInt(month) == dateActual.getMonth() + 1 &&
+                parseInt(year) == dateActual.getFullYear()
+              }
+            >
+              <FaAngleRight />
+            </button>
           </div>
-          <div>
-            <div className="tabla-dias d-flex">{celdasMes}</div>
-            {project.subcategorias.map((subcat) => {
-              let diasArray = [];
-              subcat.diasCheckeados.map((dia) => {
-                if (dia.date.split("-")[0] == year) {
-                  if (dia.date.split("-")[1] == month) {
-                    diasArray.push(dia);
-                  }
-                }
-              });
+        </div>
+        <div className="d-flex">
+          <div className="message nombre-fila"></div>
+          <div className="tabla-dias d-flex">{celdasMes}</div>
+        </div>
+        {project.subcategorias.map((subcat) => {
+          let diasArray = [];
+          subcat.diasCheckeados.map((dia) => {
+            if (dia.date.split("-")[0] == year) {
+              if (dia.date.split("-")[1] == month) {
+                diasArray.push(dia);
+              }
+            }
+          });
 
-              var celdasP = [];
-              for (let i = 1; i <= cantDias; i++) {
-                diasArray.filter(
-                  (dia) => dia.date.split("-")[2] == i.toString()
-                ).length > 0
-                  ? celdasP.push(
-                      <div
-                        key={i}
-                        className={`celda ${
-                          diasArray.filter(
+          var celdasP = [];
+          for (let i = 1; i <= cantDias; i++) {
+            diasArray.filter((dia) => dia.date.split("-")[2] == i.toString())
+              .length > 0
+              ? celdasP.push(
+                  <div
+                    key={i}
+                    className={`celda ${
+                      diasArray.filter(
+                        (dia) =>
+                          dia.date.split("-")[2] == i.toString() &&
+                          dia.status == 0
+                      ).length > 0
+                        ? "check-1"
+                        : diasArray.filter(
                             (dia) =>
                               dia.date.split("-")[2] == i.toString() &&
-                              dia.status == 0
+                              dia.status == 1
                           ).length > 0
-                            ? "check-1"
-                            : diasArray.filter(
-                                (dia) =>
-                                  dia.date.split("-")[2] == i.toString() &&
-                                  dia.status == 1
-                              ).length > 0
-                            ? "check-2"
-                            : diasArray.filter(
-                                (dia) =>
-                                  dia.date.split("-")[2] == i.toString() &&
-                                  dia.status == 2
-                              ).length > 0
-                            ? "check-3"
-                            : "check-4"
-                        }`}
-                      ></div>
-                    )
-                  : celdasP.push(<div key={i} className={"celda"}></div>);
-              }
+                        ? "check-2"
+                        : diasArray.filter(
+                            (dia) =>
+                              dia.date.split("-")[2] == i.toString() &&
+                              dia.status == 2
+                          ).length > 0
+                        ? "check-3"
+                        : "check-4"
+                    }`}
+                  ></div>
+                )
+              : celdasP.push(<div key={i} className={"celda"}></div>);
+          }
 
-              return (
-                <div className="prog-table-item d-flex align-items-center">
-                  <div className="nombre-fila">{subcat.nombreSubcat}</div>
-                  <div className="tabla-dias d-flex">{celdasP}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+          return (
+            <div className="prog-table-item d-flex align-items-center">
+              <div className="nombre-fila">{subcat.nombreSubcat}</div>
+              <div className="tabla-dias d-flex">{celdasP}</div>
+            </div>
+          );
+        })}
       </div>
     </>
   );

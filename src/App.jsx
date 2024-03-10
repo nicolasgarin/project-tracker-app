@@ -157,6 +157,7 @@ export default function App() {
   const [nuevoT, setNuevoT] = useState("");
   const [nuevoSubP, setNuevoSubP] = useState("");
   const [idP, setIdP] = useState();
+  const [cardHeights, setCardHeights] = useState([])
 
   const newProjectEl = useRef();
 
@@ -176,6 +177,8 @@ export default function App() {
               setNuevoT={setNuevoT}
               newProjectEl={newProjectEl}
               diaActual={diaActual}
+              cardHeights={cardHeights}
+              setCardHeights={setCardHeights}
             />
           }
         />

@@ -16,7 +16,9 @@
 
 .btn {
   border-radius: 8px;
-
+  display: flex!important;
+  align-items: center;
+  justify-content: center;
   &.btn-violeta {
     background-color: $violeta-3;
     color: $gris-claro !important;
@@ -28,8 +30,20 @@
   &.btn-celeste {
     background-color: $celeste;
     color: $gris-claro;
+    svg {
+      fill: $blanco;
+    }
     &:hover {
-      background-color: $celeste-2;
+      border: 2px solid $blanco !important;
+      background-color: $azul-2;
+    }
+  }
+
+  &.btn-celeste-4 {
+    background-color: $azul;
+    &:hover {
+      background-color: $azul-2
+      ;
     }
   }
 
@@ -43,11 +57,55 @@
   }
 
   &.btn-rojo {
-    background-color: $rojo !important;
+    background-color: $rojo;
     color: $rojo-2 !important;
     &:hover {
-      background-color: $rojo-2;
-      color: $rojo;;
+      background-color: $rojo-3;
+    }
+    .x {
+      height: 12px;
+      transition: 0.3s;
+    }
+    &:hover {
+      border: 2px solid $blanco !important;
+
+      .x {
+        fill: $blanco;
+        transition: 0.3s;
+      }
+    }
+  }
+  &.flecha {
+    height: 37.32px;
+    width: 40px;
+    svg {
+      fill: $celeste-4;
+    }
+    &:hover {
+      svg {
+        fill: $blanco;
+      }
+    }
+  }
+}
+
+.btn-ojo {
+  .open {
+    display: none;
+  }
+
+  .closed {
+    display: block;
+    color: $azul-2;
+  }
+  &:hover {
+    border: 2px solid $blanco !important;
+    .open {
+      display: block;
+      fill: $blanco;
+    }
+    .closed {
+      display: none;
     }
   }
 }
@@ -55,7 +113,7 @@
 .card {
   border-radius: 8px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  border: none;
+  border: none !important;
   margin-bottom: 30px;
 
   .card-header {
@@ -64,7 +122,7 @@
 
     .title {
       color: $gris-claro;
-      margin-bottom: 0
+      margin-bottom: 0;
     }
   }
 
@@ -110,64 +168,132 @@
   }
 }
 
+.square {
+  height: 45px !important;
+  width: 50px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+&.sq-sm {
+  height: 30px !important;
+  width: 30px !important;
+  padding: 10px;
+}
+}
+
+.celda {
+  height: 30px;
+  width: 30px;
+  border-radius: 8px;
+  border: 1px solid $gris-claro;
+  background-color: $blanco;
+
+  &.celda-sm {
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    border: none;
+  }
+
+  &.celda-check {
+    height: 15px;
+    width: 15px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &.check-1 {
+    background-color: $verde;
+  }
+
+  &.check-2 {
+    background-color: $verde-2;
+  }
+
+  &.check-3 {
+    background-color: $verde-3;
+  }
+
+  &.check-4 {
+    background-color: $amarillo;
+  }
+}
+
 .switch {
-    position: relative;
-    display: inline-block;
-    right: 0px;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  right: 0px;
+  width: 60px;
+  height: 34px;
 }
 
 /* Hide default HTML checkbox */
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 /* The slider */
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $celeste-3;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $celeste-3;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: $celeste;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: $celeste;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
-    background-color: #2196F3;
+input:checked + .slider {
+  background-color: #2196f3;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
+}
+
+//PROGRESS LIST
+.progress-list {
+  .date-setter {
+    margin-bottom: 20px;
+    .select-year {
+      border-radius: 6px;
+      height: 37.33px;
+      margin-right: 90px;
+    }
+    .month-setter {
+      width: 215px;
+    }
+  }
 }

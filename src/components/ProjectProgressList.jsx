@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 
 //const diaActual = day + "-" + month + "-" + year;
 
@@ -22,7 +24,7 @@ export default function ProjectProgressList({ data }) {
 
   for (let i = 1; i <= cantDias; i++) {
     celdasMes.push(
-      <div className={"celda num d-flex justify-content-center"}>{i}</div>
+      <div className={"celda num d-flex justify-content-center align-items-center"}>{i}</div>
     );
   }
 
@@ -74,39 +76,39 @@ export default function ProjectProgressList({ data }) {
   }
 
   return (
-    <div className="card-container">
-      <div className="dateSetter d-flex">
-        <select name="year" id="year" value={year} onChange={handleYear}>
+    <div className="progress-list card-container">
+      <div className="date-setter d-flex">
+        <select className="select-year" name="year" id="year" value={year} onChange={handleYear}>
           {availableYears.sort().reverse().map((year) => {
             return <option value={year}>{year}</option>;
           })}
         </select>
-
+        <div className="month-setter d-flex align-items-center justify-content-between">
         <button
-          className="btn btn-celeste"
+          className="btn btn-celeste flecha"
           onClick={prevMonth}
           disabled={
             month == 1 &&
             !availableYears.includes((parseInt(year) - 1).toString())
           }
         >
-          Mes anterior
+          <FaAngleLeft />
         </button>
-        <div>{capitalizeFirstLetter(getMonthName(month))}</div>
+        <div className="texto-imp texo-violeta">{capitalizeFirstLetter(getMonthName(month))}</div>
         <button
-          className="btn btn-celeste"
+          className="btn btn-celeste flecha"
           onClick={nextMonth}
           disabled={
             month == dateActual.getMonth() + 1 &&
             year == dateActual.getFullYear()
           }
         >
-          Mes próximo
+          <FaAngleRight />
         </button>
+        </div>
       </div>
       <div className="d-flex">
         <div className="message nombre-fila">
-          {capitalizeFirstLetter(getMonthName(month))} - {year}
         </div>
         <div className="tabla-dias d-flex">{celdasMes}</div>
       </div>
@@ -156,7 +158,7 @@ export default function ProjectProgressList({ data }) {
 
           return (
             <div className="prog-table-item d-flex align-items-center">
-              <div className="nombre-fila">{categoria.nombre}</div>
+              <div className="nombre-fila texto-imp texto-celeste">{categoria.nombre}</div>
               <div className="tabla-dias d-flex">{celdasP}</div>
             </div>
           );
@@ -166,4 +168,4 @@ export default function ProjectProgressList({ data }) {
       )}
     </div>
   );
-}B
+}

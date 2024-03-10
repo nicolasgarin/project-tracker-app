@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ACCIONES } from "../App";
 import { Link } from "react-router-dom";
 import { BsHeartPulseFill } from "react-icons/bs";
-import { FaBrain, FaPaintBrush } from "react-icons/fa";
+import { FaBrain, FaPaintBrush, FaEye } from "react-icons/fa";
+import { TbEyeClosed } from "react-icons/tb";
+import { ImCross } from "react-icons/im";
 
-export default function ProjectCard({ project, dispatch, diaActual }) {
+export default function ProjectCard({ project, dispatch, diaActual, setCardHeights, height }) {
+  const cardEl = useRef()
+  useEffect(setCardMaxHeight, [project])
+  useEffect(() => {
+    window.addEventListener('resize', setCardMaxHeight)
+    return () => window.removeEventListener('resize', setCardMaxHeight)
+  }, [])
+
+  function setCardMaxHeight() {
+    const frontHeight = cardEl.current.getBoundingClientRect().height
+    setCardHeights(currentHeights => [...currentHeights, frontHeight])
+  }
+
   return (
     <>
       <div className="col-3">
-        <div className="card" id={project.id} key={project.id}>
+        <div className="card" ref={cardEl} id={project.id} key={project.id} style={{height: height}}>
           <div className="card-header">
             <h3 className="title d-flex justify-content-between align-items-center">
               {project.nombre}
@@ -21,7 +35,7 @@ export default function ProjectCard({ project, dispatch, diaActual }) {
               )}
             </h3>
           </div>
-          <div className="card-body">
+          <div className="card-body d-flex flex-column justify-content-between">
             <div className="subcat">
               {project.subcategorias.map((subcat) => {
                 return (
@@ -32,7 +46,7 @@ export default function ProjectCard({ project, dispatch, diaActual }) {
                   >
                     {subcat.nombreSubcat}
                     <div
-                      className={`celda celda-check ${
+                      className={`celda celda-sm celda-check ${
                         subcat.diasCheckeados.filter(
                           (dia) => dia.date == diaActual
                         ).length > 0
@@ -65,13 +79,12 @@ export default function ProjectCard({ project, dispatch, diaActual }) {
               })}
             </div>
 
-            <div className="buttons">
+            <div className="buttons d-flex justify-content-between align-items-center">
               <Link to={`/projects/${project.id}`}>
-                <button className="btn btn-celeste">Ver proyecto</button>
+                <button
+                  className="btn btn-celeste-4 btn-ojo square"
+                ><TbEyeClosed className="closed" /><FaEye className="open" /></button>
               </Link>
-              {
-                //<button onClick={() => dispatch({ tipo: ACCIONES.CHECKEAR_PROYECTO, payload: { id: project.id } })} className='btn btn-celeste mb-3 mt-3'>Toggle Check</button>
-              }
               <button
                 onClick={() =>
                   dispatch({
@@ -79,9 +92,9 @@ export default function ProjectCard({ project, dispatch, diaActual }) {
                     payload: { id: project.id },
                   })
                 }
-                className="btn btn-delete"
+                className="btn btn-rojo square"
               >
-                Borrar
+                <ImCross className="x" />
               </button>
             </div>
           </div>
