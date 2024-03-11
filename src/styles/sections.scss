@@ -45,6 +45,12 @@ footer {
 .main {
   padding: 20px 0;
 
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
   .card-container {
     .row {
       width: 100%;
@@ -62,18 +68,53 @@ footer {
     color: $celeste-3;
     font-weight: 500;
     font-size: 18px;
+
+    .link-fila {
+      text-decoration: none;
+      color: unset;
+    }
+    .nombre-fila {
+      padding: 2px 5px;
+      margin-right: 15px;
+      position: relative;
+    }
+
+    .nombre-fila:hover {
+      color: $blanco;
+    }
+
+    .nombre-fila::before {
+      transform: scaleX(0);
+      transform-origin: bottom right;
+    }
+
+    .nombre-fila:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .nombre-fila::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      inset: 0 0 0 0;
+      background: $celeste-2;
+      z-index: -1;
+      transition: transform 0.3s ease;
+    }
   }
 
   .nombre-fila {
     width: 150px;
     margin-bottom: 5px;
+    margin-right: 15px;
     .tabla-dias {
       gap: 2px;
     }
-  }
-
-  .fila-card {
-    gap: 30px;
   }
 
   .num {
@@ -98,5 +139,19 @@ footer {
   }
   .section-celdas {
     margin-top: 30px;
+  }
+  h2 {
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+  .subcat-list {
+    margin: 20px 0;
+    gap: 50px;
+    .section-info {
+      width: 200px;
+      background-color: $gris-claro;
+      padding: 15px;
+      border-radius: 8px;
+    }
   }
 }

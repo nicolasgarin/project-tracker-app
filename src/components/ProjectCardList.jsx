@@ -17,7 +17,7 @@ export default function ProjectList({
 
   return (
     <>
-      <div className="card-container d-flex">
+      <div className="cardlist card-container d-flex">
         <div className="row">
           {projects.length > 0 ? (
             projects.map((categoria) => {

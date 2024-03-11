@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../../assets/logo-celeste-circulo.svg'
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineContactPage } from "react-icons/md";
@@ -9,7 +10,8 @@ export default function Footer() {
   return (
     <footer className={theme}>
       <div className="container d-flex justify-content-between">
-        <div className="texto-footer">Desarrollado por Nicolás Garín</div>
+        <div className="texto-footer">                <img src={logo} className='logo' alt='project tracker logo' />
+</div>
 
         <div class="section-icons">
           <a href="https://github.com/nicolasgarin">

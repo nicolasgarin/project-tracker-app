@@ -61,7 +61,7 @@ export default function Project({
               </div>
             </form>
           </div>
-          <div className="subcat-list d-flex fila-card">
+          <div className="subcat-list d-flex">
             {proyecto.subcategorias.map((subcat) => {
               return (
                 <div className="row">

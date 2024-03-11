@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import "variables.scss";
 @import "./styles/components.scss";
 @import "./styles/sections.scss";
 
@@ -8,5 +8,22 @@
 //}
 
 * {
-    font-family: Rubik, sans-serif;
+  font-family: Rubik, sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $violeta-2;
+  border-radius: 10px;
 }
