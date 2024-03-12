@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { ACCIONES } from "../App";
 import { Link } from "react-router-dom";
 import { BsHeartPulseFill } from "react-icons/bs";
-import { FaBrain, FaPaintBrush, FaEye } from "react-icons/fa";
+import { FaBrain, FaPaintBrush, FaEye, FaStar } from "react-icons/fa";
+import { GiNightSleep } from "react-icons/gi";
+import { CiStar } from "react-icons/ci";
 import { TbEyeClosed } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
 
@@ -36,7 +38,8 @@ export default function ProjectCard({ project, dispatch, diaActual, setCardHeigh
             </h3>
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
-            <div className="subcat">
+            <div className="d-flex justify-content-between">
+            <div className="subcat w-100">
               {project.subcategorias.map((subcat) => {
                 return (
                   <div
@@ -77,6 +80,12 @@ export default function ProjectCard({ project, dispatch, diaActual, setCardHeigh
                   </div>
                 );
               })}
+            </div>
+            <div className="vertical-btn d-flex flex-column">
+              <CiStar />
+              <FaStar />
+              <GiNightSleep />
+            </div>
             </div>
 
             <div className="buttons d-flex justify-content-between align-items-center">

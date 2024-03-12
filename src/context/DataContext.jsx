@@ -37,10 +37,13 @@ export const DATA = [
     nombre: "EF",
     id: "ukjsdf21sdds",
     tipo: "salud",
+    favorito: true,
+    archivado: false,
     subcategorias: [
       {
         nombreSubcat: "Tesis",
         idSubcat: "sdf1sdf2",
+        cerrada: false,
         diasCheckeados: [
           {
             date: "2024-1-15",
@@ -63,6 +66,29 @@ export const DATA = [
             satus: 2
           }
         ]
+      },
+      {
+        nombreSubcat: "Examen Deporte",
+        idSubcat: "sdf133sdf2",
+        cerrada: true,
+        diasCheckeados: [
+          {
+            date: "2024-2-7",
+            status: 0
+          },
+          {
+            date: "2024-2-8",
+            status: 1
+          },
+          {
+            date: "2024-2-9",
+            status: 2
+          },
+          {
+            date: "2024-2-10",
+            status: 2
+          }
+        ]
       }
     ]
   },
@@ -70,10 +96,13 @@ export const DATA = [
     nombre: "Programación",
     id: "adkj4s5la",
     tipo: "crecimiento",
+    favorito: true,
+    archivado: false,
     subcategorias: [
       {
         nombreSubcat: "React",
         idSubcat: "dsfdfs1ew",
+        cerrada: false,
         diasCheckeados: [
           {
             date: "2023-12-16",
@@ -96,6 +125,7 @@ export const DATA = [
       {
         nombreSubcat: "Liferay",
         idSubcat: "wew2sd",
+        cerrada: false,
         diasCheckeados: [
           {
             date: "2024-1-6",
@@ -133,10 +163,13 @@ export const DATA = [
     nombre: "Viajes",
     id: "sdfds45fs",
     tipo: "esparcimiento",
+    favorito: true,
+    archivado: false,
     subcategorias: [
       {
         nombreSubcat: "España",
         idSubcat: "sdsfdf1gsdf2",
+        cerrada: false,
         diasCheckeados: [
           {
             date: "2024-2-15",
@@ -166,10 +199,13 @@ export const DATA = [
     nombre: "Entrenamiento",
     id: "ukjsdsdff21sdds",
     tipo: "salud",
+    favorito: false,
+    archivado: false,
     subcategorias: [
       {
         nombreSubcat: "Correr",
         idSubcat: "sdf1sdvcf2",
+        cerrada: false,
         diasCheckeados: [
           {
             date: "2024-2-17",
@@ -199,10 +235,13 @@ export const DATA = [
     nombre: "Pintar",
     id: "ukjsd3f21sdds",
     tipo: "esparcimiento",
+    favorito: false,
+    archivado: true,
     subcategorias: [
       {
         nombreSubcat: "Pintura elefante",
         idSubcat: "sdf1sfd43df2",
+        cerrada: false,
         diasCheckeados: [
           {
             date: "2024-1-15",

@@ -11,8 +11,8 @@ export default function ProjectProgressList({ data }) {
   const [year, setYear] = useState(dateActual.getFullYear());
   const [month, setMonth] = useState(dateActual.getMonth() + 1);
   const [cantDias, setCantDias] = useState(new Date(year, month, 0).getDate());
-  var celdas = [];
   var celdasMes = [];
+  var celdasMesLetras = [];
   var availableYears = [];
 
   useEffect(() => {
@@ -20,16 +20,20 @@ export default function ProjectProgressList({ data }) {
   }, [month, year]);
 
   for (let i = 1; i <= cantDias; i++) {
-    celdas.push(<div className={"celda"}></div>);
-  }
-
-  for (let i = 1; i <= cantDias; i++) {
+    let letter = new Date(year, month - 1, i)
+      .toLocaleDateString("ES", {
+        weekday: "long",
+      })[0]
+      .toUpperCase();
     celdasMes.push(
       <div
         className={"celda num d-flex justify-content-center align-items-center"}
       >
         {i}
       </div>
+    );
+    celdasMesLetras.push(
+      <div className={"celda letra d-flex align-items-center justify-content-center"}>{letter}</div>
     );
   }
 
@@ -127,6 +131,10 @@ export default function ProjectProgressList({ data }) {
         <div className="message nombre-fila"></div>
         <div className="tabla-dias d-flex">{celdasMes}</div>
       </div>
+      <div className="d-flex">
+        <div className="message nombre-fila"></div>
+        <div className="tabla-dias d-flex">{celdasMesLetras}</div>
+      </div>
       {data.length > 0 ? (
         data.map((categoria) => {
           let diasArray = [];
@@ -158,7 +166,7 @@ export default function ProjectProgressList({ data }) {
                           dia.date.split("-")[2] == i.toString() &&
                           (dia.status == 1 || dia.status == 2)
                       ).length == 0
-                        ? "check-1"
+                        ? "check-1 animation-1"
                         : diasArray.filter(
                             (dia) =>
                               dia.date.split("-")[2] == i.toString() &&
@@ -169,14 +177,14 @@ export default function ProjectProgressList({ data }) {
                               dia.date.split("-")[2] == i.toString() &&
                               dia.status == 2
                           ).length == 0
-                        ? "check-2"
+                        ? "check-2 animation-2"
                         : diasArray.filter(
                             (dia) =>
                               dia.date.split("-")[2] == i.toString() &&
                               dia.status == 2
                           ).length > 0
-                        ? "check-3"
-                        : "check-4"
+                        ? "check-3 animation"
+                        : "check-4 animation-2"
                     }`}
                   ></div>
                 )

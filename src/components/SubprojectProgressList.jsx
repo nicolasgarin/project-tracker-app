@@ -8,6 +8,7 @@ export default function SubprojectProgressList({ project }) {
   const [month, setMonth] = useState(dateActual.getMonth() + 1);
   const [cantDias, setCantDias] = useState(new Date(year, month, 0).getDate());
   var celdasMes = [];
+  var celdasMesLetras = [];
   var availableYears = [];
 
   useEffect(() => {
@@ -15,8 +16,16 @@ export default function SubprojectProgressList({ project }) {
   }, [month, year]);
 
   for (let i = 1; i <= cantDias; i++) {
+    let letter = new Date(year, month - 1, i)
+      .toLocaleDateString("ES", {
+        weekday: "long",
+      })[0]
+      .toUpperCase();
     celdasMes.push(
-      <div className={"celda num d-flex justify-content-center"}>{i}</div>
+      <div className={"celda num d-flex align-items-center justify-content-center"}>{i}</div>
+    );
+    celdasMesLetras.push(
+      <div className={"celda letra d-flex align-items-center justify-content-center"}>{letter}</div>
     );
   }
 
@@ -118,6 +127,10 @@ export default function SubprojectProgressList({ project }) {
           <div className="message nombre-fila"></div>
           <div className="tabla-dias d-flex">{celdasMes}</div>
         </div>
+        <div className="d-flex">
+          <div className="message nombre-fila"></div>
+          <div className="tabla-dias d-flex">{celdasMesLetras}</div>
+        </div>
         {project.subcategorias.map((subcat) => {
           let diasArray = [];
           subcat.diasCheckeados.map((dia) => {
@@ -141,20 +154,20 @@ export default function SubprojectProgressList({ project }) {
                           dia.date.split("-")[2] == i.toString() &&
                           dia.status == 0
                       ).length > 0
-                        ? "check-1"
+                        ? "check-1 animation"
                         : diasArray.filter(
                             (dia) =>
                               dia.date.split("-")[2] == i.toString() &&
                               dia.status == 1
                           ).length > 0
-                        ? "check-2"
+                        ? "check-2 animation-2"
                         : diasArray.filter(
                             (dia) =>
                               dia.date.split("-")[2] == i.toString() &&
                               dia.status == 2
                           ).length > 0
-                        ? "check-3"
-                        : "check-4"
+                        ? "check-3  animation"
+                        : "check-4  animation-2"
                     }`}
                   ></div>
                 )
