@@ -82,7 +82,7 @@ export default function Home({
           </section>
           <section className="container">
             <h2 className="titulo">Progresión</h2>
-            <ProjectProgressList data={data} diaActual={diaActual} />
+            <ProjectProgressList data={data.filter((p)=> p.archivado == false)} diaActual={diaActual} />
           </section>
         </div>
       </div>

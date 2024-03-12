@@ -8,26 +8,38 @@ import { CiStar } from "react-icons/ci";
 import { TbEyeClosed } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
 
-export default function ProjectCard({ project, dispatch, diaActual, setCardHeights, height }) {
-  const cardEl = useRef()
-  useEffect(setCardMaxHeight, [project])
+export default function ProjectCard({
+  project,
+  dispatch,
+  diaActual,
+  setCardHeights,
+  height,
+}) {
+  const cardEl = useRef();
+  useEffect(setCardMaxHeight, [project]);
   useEffect(() => {
-    window.addEventListener('resize', setCardMaxHeight)
-    return () => window.removeEventListener('resize', setCardMaxHeight)
-  }, [])
+    window.addEventListener("resize", setCardMaxHeight);
+    return () => window.removeEventListener("resize", setCardMaxHeight);
+  }, []);
 
   function setCardMaxHeight() {
-    const frontHeight = cardEl.current.getBoundingClientRect().height
-    setCardHeights(currentHeights => [...currentHeights, frontHeight])
+    const frontHeight = cardEl.current.getBoundingClientRect().height;
+    setCardHeights((currentHeights) => [...currentHeights, frontHeight]);
   }
 
   return (
     <>
       <div className="col-3">
-        <div className="card" ref={cardEl} id={project.id} key={project.id} style={{height: height}}>
+        <div
+          className="card"
+          ref={cardEl}
+          id={project.id}
+          key={project.id}
+          style={{ height: height }}
+        >
           <div className="card-header">
             <h3 className="title d-flex justify-content-between align-items-center">
-              {project.nombre}
+              <Link className="link-titulo" to={`/projects/${project.id}`}>{project.nombre}</Link>
               {project.tipo == "salud" ? (
                 <BsHeartPulseFill />
               ) : project.tipo == "crecimiento" ? (
@@ -39,61 +51,97 @@ export default function ProjectCard({ project, dispatch, diaActual, setCardHeigh
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div className="d-flex justify-content-between">
-            <div className="subcat w-100">
-              {project.subcategorias.map((subcat) => {
-                return (
-                  <div
-                    className="fila-card d-flex align-items-center"
-                    id={subcat.idSubcat}
-                    key={subcat.idSubcat}
-                  >
-                    {subcat.nombreSubcat}
+              <div className="subcat w-100">
+                {project.subcategorias.map((subcat) => {
+                  return (
                     <div
-                      className={`celda celda-sm celda-check ${
-                        subcat.diasCheckeados.filter(
-                          (dia) => dia.date == diaActual
-                        ).length > 0
-                          ? subcat.diasCheckeados.filter(
-                              (dia) => dia.date == diaActual && dia.status == 0
-                            ).length > 0
-                            ? "check-1"
-                            : subcat.diasCheckeados.filter(
+                      className="fila-card d-flex align-items-center"
+                      id={subcat.idSubcat}
+                      key={subcat.idSubcat}
+                    >
+                      {subcat.nombreSubcat}
+                      <div
+                        className={`celda celda-sm celda-check ${
+                          subcat.diasCheckeados.filter(
+                            (dia) => dia.date == diaActual
+                          ).length > 0
+                            ? subcat.diasCheckeados.filter(
                                 (dia) =>
-                                  dia.date == diaActual && dia.status == 1
+                                  dia.date == diaActual && dia.status == 0
                               ).length > 0
-                            ? "check-2"
-                            : subcat.diasCheckeados.filter(
-                                (dia) =>
-                                  dia.date == diaActual && dia.status == 2
-                              ).length > 0
-                            ? "check-3"
-                            : "check-4"
-                          : ""
-                      }`}
-                      onClick={() =>
-                        dispatch({
-                          tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
-                          payload: { id: project.id, idSubP: subcat.idSubcat },
-                        })
-                      }
-                    ></div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="vertical-btn d-flex flex-column">
-              <CiStar />
-              <FaStar />
-              <GiNightSleep />
-            </div>
+                              ? "check-1"
+                              : subcat.diasCheckeados.filter(
+                                  (dia) =>
+                                    dia.date == diaActual && dia.status == 1
+                                ).length > 0
+                              ? "check-2"
+                              : subcat.diasCheckeados.filter(
+                                  (dia) =>
+                                    dia.date == diaActual && dia.status == 2
+                                ).length > 0
+                              ? "check-3"
+                              : "check-4"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          dispatch({
+                            tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
+                            payload: {
+                              id: project.id,
+                              idSubP: subcat.idSubcat,
+                            },
+                          })
+                        }
+                      ></div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="vertical-btn d-flex flex-column">
+                <div
+                  onClick={() =>
+                    dispatch({
+                      tipo: ACCIONES.FAV_PROYECTO,
+                      payload: { id: project.id },
+                    })
+                  }
+                  className={`star ${project.favorito ? "filled" : "outline"}`}
+                >
+                  <CiStar className="star-outline" />
+                  <FaStar className="star-fill" />
+                </div>
+                <div
+                  onClick={() =>
+                    dispatch({
+                      tipo: ACCIONES.ARCHIVAR_PROYECTO,
+                      payload: { id: project.id },
+                    })
+                  }
+                  className={`moon ${
+                    project.archivado ? "deactive" : "active"
+                  }`}
+                >
+                  <GiNightSleep />
+                </div>
+              </div>
             </div>
 
             <div className="buttons d-flex justify-content-between align-items-center">
-              <Link to={`/projects/${project.id}`}>
+              {!project.archivado ? (
+                <Link to={`/projects/${project.id}`}>
+                  <button className="btn btn-celeste-4 btn-ojo square">
+                    <TbEyeClosed className="closed" />
+                    <FaEye className="open" />
+                  </button>
+                </Link>
+              ) : (
                 <button
+                  disabled={true}
                   className="btn btn-celeste-4 btn-ojo square"
-                ><TbEyeClosed className="closed" /><FaEye className="open" /></button>
-              </Link>
+                >
+                  <TbEyeClosed className="closed" />
+                </button>
+              )}
               <button
                 onClick={() =>
                   dispatch({

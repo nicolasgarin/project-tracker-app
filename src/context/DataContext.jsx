@@ -37,7 +37,7 @@ export const DATA = [
     nombre: "EF",
     id: "ukjsdf21sdds",
     tipo: "salud",
-    favorito: true,
+    favorito: false,
     archivado: false,
     subcategorias: [
       {

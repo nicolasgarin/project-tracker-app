@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { DATA, useData } from "./context/DataContext";
-import { useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Home from "./components/pages/Home";
 import Footer from "./components/layout/Footer";
@@ -14,8 +14,11 @@ const day = objDate.getDate();
 const diaActual = year + "-" + month + "-" + day;
 
 export const ACCIONES = {
+  ACTUALIZAR_DATA: "actualizar-data",
   AGREGAR_PROYECTO: "agregar-proyecto",
   BORRAR_PROYECTO: "borrar-proyecto",
+  FAV_PROYECTO: "fav-proyecto",
+  ARCHIVAR_PROYECTO: "archivar-proyecto",
   AGREGAR_SUBPROYECTO: "agregar-subproyecto",
   BORRAR_SUBPROYECTO: "borrar-subproyecto",
   ACTUALIZAR_SUBPROYECTO: "actualizar-subproyecto",
@@ -23,6 +26,12 @@ export const ACCIONES = {
 
 function reducer(categorias, accion) {
   switch (accion.tipo) {
+    case ACCIONES.ACTUALIZAR_DATA:
+      return categorias.sort(function(a, b) {
+        return a.archivado ? 1 : -1;
+    }).sort(function(a, b) {
+      return a.favorito ? -1 : 1;
+  });
     case ACCIONES.AGREGAR_PROYECTO:
       return [
         ...categorias,
@@ -44,6 +53,29 @@ function reducer(categorias, accion) {
         accion.payload.idSubP,
         categorias
       );
+    case ACCIONES.FAV_PROYECTO:
+      return categorias.map((categoria) => {
+        if (categoria.id === accion.payload.id) {
+          return {
+            ...categoria,
+            favorito: !categoria.favorito,
+          };
+        } else {
+          return categoria;
+        }
+      });
+    case ACCIONES.ARCHIVAR_PROYECTO:
+      return categorias.map((categoria) => {
+        if (categoria.id === accion.payload.id) {
+          return {
+            ...categoria,
+            favorito: false,
+            archivado: !categoria.archivado,
+          };
+        } else {
+          return categoria;
+        }
+      });
     case ACCIONES.ACTUALIZAR_SUBPROYECTO:
       return actualizarSubProyecto(
         accion.payload.id,
@@ -106,7 +138,8 @@ function actualizarSubProyecto(idP, idSubP, categorias) {
             return {
               ...subcat,
               diasCheckeados:
-                subcat.diasCheckeados.filter((dia) => dia.date == diaActual).length > 0
+                subcat.diasCheckeados.filter((dia) => dia.date == diaActual)
+                  .length > 0
                   ? subcat.diasCheckeados.filter(
                       (dia) => dia.date == diaActual && dia.status == 0
                     ).length > 0
@@ -151,15 +184,21 @@ function actualizarSubProyecto(idP, idSubP, categorias) {
 }
 
 export default function App() {
-  const { data } = useData();
+  //const { data } = useData();
   const [categorias, dispatch] = useReducer(reducer, DATA);
   const [nuevoP, setNuevoP] = useState("");
   const [nuevoT, setNuevoT] = useState("");
   const [nuevoSubP, setNuevoSubP] = useState("");
   const [idP, setIdP] = useState();
-  const [cardHeights, setCardHeights] = useState([])
+  const [cardHeights, setCardHeights] = useState([]);
 
   const newProjectEl = useRef();
+
+  useEffect(()=>{
+    dispatch({
+      tipo: ACCIONES.ACTUALIZAR_DATA,
+    })
+  },[categorias])
 
   return (
     <>

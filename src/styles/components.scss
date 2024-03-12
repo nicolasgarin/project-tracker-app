@@ -16,7 +16,7 @@
 
 .btn {
   border-radius: 8px;
-  display: flex!important;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   &.btn-violeta {
@@ -42,8 +42,7 @@
   &.btn-celeste-4 {
     background-color: $azul;
     &:hover {
-      background-color: $azul-2
-      ;
+      background-color: $azul-2;
     }
   }
 
@@ -120,6 +119,14 @@
     background-color: $violeta-3 !important;
     padding: 10px 15px;
 
+    .link-titulo {
+      color: unset;
+      text-decoration: none;
+
+      &:hover {
+        color: $blanco !important;
+      }
+    }
     .title {
       color: $gris-claro;
       margin-bottom: 0;
@@ -133,10 +140,54 @@
     color: $gris-claro;
     font-weight: 500;
     .vertical-btn {
+      gap: 10px;
       svg {
         height: 20px;
         width: 20px;
-  
+      }
+      .star {
+        svg {
+          &:hover {
+            fill: $blanco !important;
+            cursor: pointer;
+          }
+        }
+        &.filled {
+          .star-fill {
+            display: block;
+            animation: popUp 0.3s ease-in-out 0s 1 normal forwards;
+          }
+          .star-outline {
+            display: none;
+          }
+        }
+        &.outline {
+          .star-fill {
+            display: none;
+          }
+          .star-outline {
+            display: block;
+            fill: $celeste-4;
+          }
+        }
+      }
+      .moon {
+        svg {
+          &:hover {
+            fill: $blanco !important;
+            cursor: pointer;
+          }
+        }
+        &.deactive {
+          svg {
+          animation: popUp 0.3s ease-in-out 0s 1 normal forwards;
+          }
+        }
+        &.active {
+          svg {
+          fill: $celeste-4;
+          }
+        }
       }
     }
 
@@ -144,7 +195,7 @@
       display: flex;
       align-items: center;
       gap: 15px;
-      margin-top: 10px;
+      margin-top: 15px;
 
       .btn {
         height: fit-content;
@@ -188,11 +239,11 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
-&.sq-sm {
-  height: 30px !important;
-  width: 30px !important;
-  padding: 10px;
-}
+  &.sq-sm {
+    height: 30px !important;
+    width: 30px !important;
+    padding: 10px;
+  }
 }
 
 .celda {
@@ -220,7 +271,7 @@
 
   &.check-1 {
     background-color: $verde;
-    animation: popUp .3s ease-in-out 0s 1 normal forwards;
+    animation: popUp 0.3s ease-in-out 0s 1 normal forwards;
   }
 
   &.check-2 {
@@ -314,9 +365,9 @@ input:checked + .slider:before {
 }
 
 .animation {
-  animation: popUp .5s ease-in-out 0s 1 normal forwards;
+  animation: popUp 0.5s ease-in-out 0s 1 normal forwards;
 }
 
 .animation-2 {
-  animation: popUp-2 .5s ease-in-out 0s 1 normal forwards;
+  animation: popUp-2 0.5s ease-in-out 0s 1 normal forwards;
 }
