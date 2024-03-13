@@ -31,7 +31,7 @@ export default function ProjectCard({
     <>
       <div className="col-3">
         <div
-          className="card"
+          className={`card ${project.archivado ? "disabled" : ""}`}
           ref={cardEl}
           id={project.id}
           key={project.id}
@@ -39,7 +39,13 @@ export default function ProjectCard({
         >
           <div className="card-header">
             <h3 className="title d-flex justify-content-between align-items-center">
-              <Link className="link-titulo" to={`/projects/${project.id}`}>{project.nombre}</Link>
+              {!project.archivado ? (
+                <Link className="link-titulo" to={`/projects/${project.id}`}>
+                  {project.nombre}
+                </Link>
+              ) : (
+                <div>{project.nombre}</div>
+              )}
               {project.tipo == "salud" ? (
                 <BsHeartPulseFill />
               ) : project.tipo == "crecimiento" ? (
@@ -60,56 +66,68 @@ export default function ProjectCard({
                       key={subcat.idSubcat}
                     >
                       {subcat.nombreSubcat}
-                      <div
-                        className={`celda celda-sm celda-check ${
-                          subcat.diasCheckeados.filter(
-                            (dia) => dia.date == diaActual
-                          ).length > 0
-                            ? subcat.diasCheckeados.filter(
-                                (dia) =>
-                                  dia.date == diaActual && dia.status == 0
-                              ).length > 0
-                              ? "check-1"
-                              : subcat.diasCheckeados.filter(
+                      {!project.archivado ? (
+                        <div
+                          className={`celda celda-sm celda-check ${
+                            subcat.diasCheckeados.filter(
+                              (dia) => dia.date == diaActual
+                            ).length > 0
+                              ? subcat.diasCheckeados.filter(
                                   (dia) =>
-                                    dia.date == diaActual && dia.status == 1
+                                    dia.date == diaActual && dia.status == 0
                                 ).length > 0
-                              ? "check-2"
-                              : subcat.diasCheckeados.filter(
-                                  (dia) =>
-                                    dia.date == diaActual && dia.status == 2
-                                ).length > 0
-                              ? "check-3"
-                              : "check-4"
-                            : ""
-                        }`}
-                        onClick={() =>
-                          dispatch({
-                            tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
-                            payload: {
-                              id: project.id,
-                              idSubP: subcat.idSubcat,
-                            },
-                          })
-                        }
-                      ></div>
+                                ? "check-1"
+                                : subcat.diasCheckeados.filter(
+                                    (dia) =>
+                                      dia.date == diaActual && dia.status == 1
+                                  ).length > 0
+                                ? "check-2"
+                                : subcat.diasCheckeados.filter(
+                                    (dia) =>
+                                      dia.date == diaActual && dia.status == 2
+                                  ).length > 0
+                                ? "check-3"
+                                : "check-4"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            dispatch({
+                              tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
+                              payload: {
+                                id: project.id,
+                                idSubP: subcat.idSubcat,
+                              },
+                            })
+                          }
+                        ></div>
+                      ) : (
+                        <div className="celda celda-sm celda-disabled"></div>
+                      )}
                     </div>
                   );
                 })}
               </div>
               <div className="vertical-btn d-flex flex-column">
-                <div
-                  onClick={() =>
-                    dispatch({
-                      tipo: ACCIONES.FAV_PROYECTO,
-                      payload: { id: project.id },
-                    })
-                  }
-                  className={`star ${project.favorito ? "filled" : "outline"}`}
-                >
-                  <CiStar className="star-outline" />
-                  <FaStar className="star-fill" />
-                </div>
+                {!project.archivado ? (
+                  <div
+                    onClick={() =>
+                      dispatch({
+                        tipo: ACCIONES.FAV_PROYECTO,
+                        payload: { id: project.id },
+                      })
+                    }
+                    className={`star ${
+                      project.favorito ? "filled" : "outline"
+                    }`}
+                  >
+                    <CiStar className="star-outline" />
+                    <FaStar className="star-fill" />
+                  </div>
+                ) : (
+                  <div className={`star outline disabled`}>
+                    <CiStar className="star-outline" />
+                  </div>
+                )}
                 <div
                   onClick={() =>
                     dispatch({
@@ -142,17 +160,23 @@ export default function ProjectCard({
                   <TbEyeClosed className="closed" />
                 </button>
               )}
-              <button
-                onClick={() =>
-                  dispatch({
-                    tipo: ACCIONES.BORRAR_PROYECTO,
-                    payload: { id: project.id },
-                  })
-                }
-                className="btn btn-rojo square"
-              >
-                <ImCross className="x" />
-              </button>
+              {!project.archivado ? (
+                <button
+                  onClick={() =>
+                    dispatch({
+                      tipo: ACCIONES.BORRAR_PROYECTO,
+                      payload: { id: project.id },
+                    })
+                  }
+                  className="btn btn-rojo square"
+                >
+                  <ImCross className="x" />
+                </button>
+              ) : (
+                <button disabled={true} className="btn btn-rojo square">
+                  <ImCross className="x" />
+                </button>
+              )}
             </div>
           </div>
         </div>
