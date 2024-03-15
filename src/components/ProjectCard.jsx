@@ -59,7 +59,8 @@ export default function ProjectCard({
             <div className="d-flex justify-content-between">
               <div className="subcat w-100">
                 {project.subcategorias.map((subcat) => {
-                  return (
+                  if (!subcat.cerrada) {
+                    return (
                     <div
                       className="fila-card d-flex align-items-center"
                       id={subcat.idSubcat}
@@ -104,7 +105,7 @@ export default function ProjectCard({
                         <div className="celda celda-sm celda-disabled"></div>
                       )}
                     </div>
-                  );
+                  )}
                 })}
               </div>
               <div className="vertical-btn d-flex flex-column">

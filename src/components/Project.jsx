@@ -82,6 +82,7 @@ export default function Project({
                           <ImCross className="x" />
                         </button>
                         </div>
+                        {!subcat.cerrada ? (
                         <div
                           className={`celda celda-check ${
                             subcat.diasCheckeados.filter(
@@ -115,6 +116,7 @@ export default function Project({
                             })
                           }
                         ></div>
+                        ) : null}
 
                         <div className="subcat-info">
                           <div>
@@ -152,6 +154,9 @@ export default function Project({
                               ).length
                             }
                           </div>
+                          {subcat.cerrada ? (
+                            <div className="cerrado">Cerrado</div>
+                          ) : null}
                         </div>
                       </div>
                     </div>

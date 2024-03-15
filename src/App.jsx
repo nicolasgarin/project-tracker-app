@@ -91,7 +91,8 @@ function nuevoProyecto(nombreP, tipoP) {
   return {
     id: uuidv4(),
     nombre: nombreP,
-    checkeado: false,
+    favorito: false,
+    archivado: false,
     tipo: tipoP,
     subcategorias: [],
   };
@@ -104,7 +105,7 @@ function nuevoSubProyecto(nombreSubP, idP, categorias) {
         ...categoria,
         subcategorias: [
           ...categoria.subcategorias,
-          { nombreSubcat: nombreSubP, idSubcat: uuidv4(), diasCheckeados: [] },
+          { nombreSubcat: nombreSubP, idSubcat: uuidv4(), cerrada: false, diasCheckeados: [] },
         ],
       };
     } else {

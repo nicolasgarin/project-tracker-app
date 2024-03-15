@@ -15,27 +15,43 @@ export default function SubprojectProgressList({ project }) {
     updateCantDias();
   }, [month, year]);
 
-  for (let i = 1; i <= cantDias; i++) {
-    let letter = new Date(year, month - 1, i)
-      .toLocaleDateString("ES", {
-        weekday: "long",
-      })[0]
-      .toUpperCase();
-    celdasMes.push(
-      <div className={"celda num d-flex align-items-center justify-content-center"}>{i}</div>
-    );
-    celdasMesLetras.push(
-      <div className={"celda letra d-flex align-items-center justify-content-center"}>{letter}</div>
-    );
-  }
 
-  project.subcategorias.map((subcat) => {
-    subcat.diasCheckeados.map((dia) => {
-      if (!availableYears.includes(dia.date.split("-")[0])) {
-        availableYears.push(dia.date.split("-")[0]);
+    for (let i = 1; i <= cantDias; i++) {
+      let letter = new Date(year, month - 1, i)
+        .toLocaleDateString("ES", {
+          weekday: "long",
+        })[0]
+        .toUpperCase();
+      celdasMes.push(
+        <div
+          className={
+            "celda num d-flex align-items-center justify-content-center"
+          }
+        >
+          {i}
+        </div>
+      );
+      celdasMesLetras.push(
+        <div
+          className={
+            "celda letra d-flex align-items-center justify-content-center"
+          }
+        >
+          {letter}
+        </div>
+      );
+    }
+
+    project.subcategorias.map((subcat) => {
+      if (!subcat.cerrada) {
+        subcat.diasCheckeados.map((dia) => {
+          if (!availableYears.includes(dia.date.split("-")[0])) {
+            availableYears.push(dia.date.split("-")[0]);
+          }
+        });
       }
     });
-  });
+  
 
   function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
@@ -132,54 +148,56 @@ export default function SubprojectProgressList({ project }) {
           <div className="tabla-dias d-flex">{celdasMesLetras}</div>
         </div>
         {project.subcategorias.map((subcat) => {
-          let diasArray = [];
-          subcat.diasCheckeados.map((dia) => {
-            if (dia.date.split("-")[0] == year) {
-              if (dia.date.split("-")[1] == month) {
-                diasArray.push(dia);
+          if (!subcat.cerrada) {
+            let diasArray = [];
+            subcat.diasCheckeados.map((dia) => {
+              if (dia.date.split("-")[0] == year) {
+                if (dia.date.split("-")[1] == month) {
+                  diasArray.push(dia);
+                }
               }
+            });
+
+            var celdasP = [];
+            for (let i = 1; i <= cantDias; i++) {
+              diasArray.filter((dia) => dia.date.split("-")[2] == i.toString())
+                .length > 0
+                ? celdasP.push(
+                    <div
+                      key={i}
+                      className={`celda ${
+                        diasArray.filter(
+                          (dia) =>
+                            dia.date.split("-")[2] == i.toString() &&
+                            dia.status == 0
+                        ).length > 0
+                          ? "check-1 animation"
+                          : diasArray.filter(
+                              (dia) =>
+                                dia.date.split("-")[2] == i.toString() &&
+                                dia.status == 1
+                            ).length > 0
+                          ? "check-2 animation-2"
+                          : diasArray.filter(
+                              (dia) =>
+                                dia.date.split("-")[2] == i.toString() &&
+                                dia.status == 2
+                            ).length > 0
+                          ? "check-3  animation"
+                          : "check-4  animation-2"
+                      }`}
+                    ></div>
+                  )
+                : celdasP.push(<div key={i} className={"celda"}></div>);
             }
-          });
 
-          var celdasP = [];
-          for (let i = 1; i <= cantDias; i++) {
-            diasArray.filter((dia) => dia.date.split("-")[2] == i.toString())
-              .length > 0
-              ? celdasP.push(
-                  <div
-                    key={i}
-                    className={`celda ${
-                      diasArray.filter(
-                        (dia) =>
-                          dia.date.split("-")[2] == i.toString() &&
-                          dia.status == 0
-                      ).length > 0
-                        ? "check-1 animation"
-                        : diasArray.filter(
-                            (dia) =>
-                              dia.date.split("-")[2] == i.toString() &&
-                              dia.status == 1
-                          ).length > 0
-                        ? "check-2 animation-2"
-                        : diasArray.filter(
-                            (dia) =>
-                              dia.date.split("-")[2] == i.toString() &&
-                              dia.status == 2
-                          ).length > 0
-                        ? "check-3  animation"
-                        : "check-4  animation-2"
-                    }`}
-                  ></div>
-                )
-              : celdasP.push(<div key={i} className={"celda"}></div>);
+            return (
+              <div className="prog-table-item d-flex align-items-center">
+                <div className="nombre-fila">{subcat.nombreSubcat}</div>
+                <div className="tabla-dias d-flex">{celdasP}</div>
+              </div>
+            );
           }
-
-          return (
-            <div className="prog-table-item d-flex align-items-center">
-              <div className="nombre-fila">{subcat.nombreSubcat}</div>
-              <div className="tabla-dias d-flex">{celdasP}</div>
-            </div>
-          );
         })}
       </div>
     </>
