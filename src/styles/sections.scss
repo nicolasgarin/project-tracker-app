@@ -152,7 +152,9 @@ footer {
   }
   .subcat-list {
     margin: 20px 0;
+    padding-bottom: 15px;
     gap: 50px;
+    overflow-x: scroll;
     .section-info {
       width: 200px;
       background-color: $gris-claro;
@@ -160,4 +162,19 @@ footer {
       border-radius: 8px;
     }
   }
+}
+
+.tab-section {
+  width: 500px;
+  margin-left: auto;
+  .nav-tabs {
+    margin-left: auto;
+  }
+  .tab-content {
+    background-color: $violeta;
+    padding: 15px;
+    border-radius: 8px;
+  }
+}
+.completed-subp {
 }

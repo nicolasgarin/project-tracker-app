@@ -160,42 +160,6 @@ export const DATA = [
     ]
   },
   {
-    nombre: "Viajes",
-    id: "sdfds45fs",
-    tipo: "esparcimiento",
-    favorito: true,
-    archivado: false,
-    subcategorias: [
-      {
-        nombreSubcat: "España",
-        idSubcat: "sdsfdf1gsdf2",
-        cerrada: false,
-        diasCheckeados: [
-          {
-            date: "2024-2-15",
-            status: 1
-          },
-          {
-            date: "2024-2-17",
-            status: 1
-          },
-          {
-            date: "2024-2-20",
-            status: 1
-          },
-          {
-            date: "2024-3-3",
-            status: 2
-          },
-          {
-            date: "2024-3-4",
-            satus: 1
-          }
-        ]
-      }
-    ]
-  },
-  {
     nombre: "Entrenamiento",
     id: "ukjsdsdff21sdds",
     tipo: "salud",
@@ -226,42 +190,6 @@ export const DATA = [
           {
             date: "2024-3-6",
             satus: 3
-          }
-        ]
-      }
-    ]
-  },
-  {
-    nombre: "Pintar",
-    id: "ukjsd3f21sdds",
-    tipo: "esparcimiento",
-    favorito: false,
-    archivado: true,
-    subcategorias: [
-      {
-        nombreSubcat: "Pintura elefante",
-        idSubcat: "sdf1sfd43df2",
-        cerrada: false,
-        diasCheckeados: [
-          {
-            date: "2024-1-15",
-            status: 0
-          },
-          {
-            date: "2024-1-23",
-            status: 0
-          },
-          {
-            date: "2024-2-3",
-            status: 0
-          },
-          {
-            date: "2024-3-1",
-            status: 0
-          },
-          {
-            date: "2024-3-7",
-            satus: 0
           }
         ]
       }

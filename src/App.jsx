@@ -22,6 +22,7 @@ export const ACCIONES = {
   AGREGAR_SUBPROYECTO: "agregar-subproyecto",
   BORRAR_SUBPROYECTO: "borrar-subproyecto",
   ACTUALIZAR_SUBPROYECTO: "actualizar-subproyecto",
+  FINALIZAR_SUBPROYECTO: "finalizar-subproyecto",
 };
 
 function reducer(categorias, accion) {
@@ -82,6 +83,12 @@ function reducer(categorias, accion) {
         accion.payload.idSubP,
         categorias
       );
+      case ACCIONES.FINALIZAR_SUBPROYECTO:
+        return finalizarSubProyecto(
+          accion.payload.id,
+          accion.payload.idSubP,
+          categorias
+        );
     default:
       return categorias;
   }
@@ -172,6 +179,28 @@ function actualizarSubProyecto(idP, idSubP, categorias) {
                         (dia) => dia.date != diaActual
                       )
                   : [...subcat.diasCheckeados, { date: diaActual, status: 0 }],
+            };
+          } else {
+            return subcat;
+          }
+        }),
+      };
+    } else {
+      return categoria;
+    }
+  });
+}
+
+function finalizarSubProyecto(idP, idSubP, categorias) {
+  return categorias.map((categoria) => {
+    if (categoria.id === idP) {
+      return {
+        ...categoria,
+        subcategorias: categoria.subcategorias.map((subcat) => {
+          if (subcat.idSubcat === idSubP) {
+            return {
+              ...subcat,
+              cerrada: !subcat.cerrada,
             };
           } else {
             return subcat;
