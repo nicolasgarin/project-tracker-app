@@ -382,6 +382,23 @@ input:checked + .slider:before {
   }
 }
 
+//MEDAL BOX
+.logros {
+  row-gap: 15px;
+  .medal-box {
+    .medal {
+      width: 100px;
+      height: 100px;
+    }
+    .medal-name {
+      font-size: 14px;
+    }
+    &:hover {
+        transform: scale(1.1);
+    }
+  }  
+}
+
 .animation {
   animation: popUp 0.5s ease-in-out 0s 1 normal forwards;
 }

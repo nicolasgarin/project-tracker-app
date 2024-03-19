@@ -39,6 +39,13 @@ export const DATA = [
     tipo: "salud",
     favorito: false,
     archivado: false,
+    logros: [
+      {
+        idLogro: "ghre",
+        nombreLogro: "Examen salud",
+        imgLogo: "estrella"
+      }
+    ],
     subcategorias: [
       {
         nombreSubcat: "Tesis",
@@ -98,6 +105,7 @@ export const DATA = [
     tipo: "crecimiento",
     favorito: true,
     archivado: false,
+    logros: [],
     subcategorias: [
       {
         nombreSubcat: "React",
@@ -165,6 +173,18 @@ export const DATA = [
     tipo: "salud",
     favorito: false,
     archivado: false,
+    logros: [
+      {
+        idLogro: "dskfs",
+        nombreLogro: "5K Montevideo corre",
+        imgLogo: "rayo"
+      },
+      {
+        idLogro: "dskfsdfdss",
+        nombreLogro: "3 meses crossfit",
+        imgLogo: "copa"
+      }
+    ],
     subcategorias: [
       {
         nombreSubcat: "Correr",
