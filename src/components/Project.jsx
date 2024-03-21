@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ACCIONES } from "../App";
 import { FaAngleLeft } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
+import { useUserOptions } from "../context/UserOptionsContext";
 import SubprojectProgressList from "./SubprojectProgressList";
 import CompletedSubP from "./CompletedSubP";
 import Logros from "./Logros";
@@ -19,6 +20,7 @@ export default function Project({
     data.filter((proyecto) => proyecto.id == id)[0]
   );
   const [idSubP, setIdSubP] = useState();
+  const { theme } = useUserOptions();
 
   useEffect(() => {
     setProyecto(data.filter((proyecto) => proyecto.id == id)[0]);
@@ -35,7 +37,7 @@ export default function Project({
 
   return (
     <>
-      <div className="main project">
+      <div className={`main project ${theme}`}>
         <div className="container">
           <div className="d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center">

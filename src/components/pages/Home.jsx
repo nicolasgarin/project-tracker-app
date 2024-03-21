@@ -3,6 +3,7 @@ import "../../main.scss";
 import ProjectList from "../ProjectCardList";
 import { ACCIONES } from "../../App";
 import NewProject from "../NewProject";
+import { useUserOptions } from '../../context/DataContext';
 import ProjectProgressList from "../ProjectProgressList";
 
 export default function Home({
@@ -17,6 +18,8 @@ export default function Home({
   cardHeights,
   setCardHeights,
 }) {
+  const { theme } = useUserOptions();
+
   function handleSubmit(e) {
     e.preventDefault();
     dispatch({
@@ -28,7 +31,7 @@ export default function Home({
   }
 
   return (
-    <>
+    <div className={theme}>
       <form className="form-nuevo" onSubmit={handleSubmit}>
         <div className="container d-flex align-items-center justify-content-end">
           <label className="form-label" htmlFor="item">
@@ -86,6 +89,6 @@ export default function Home({
           </section>
         </div>
       </div>
-    </>
+    </div>
   );
 }

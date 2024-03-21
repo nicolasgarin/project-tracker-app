@@ -13,7 +13,6 @@ export default function NewProject(dispatch, nuevoP, setNuevoP, nuevoT, setNuevo
 
     return (
         <>
-        {console.log(dispatch.dispatch)}
             <form className='form-nuevo' onSubmit={handleSubmit}>
                 <div className='container d-flex align-items-center justify-content-end'>
                     <label className='form-label' htmlFor="item">Nuevo proyecto</label>
