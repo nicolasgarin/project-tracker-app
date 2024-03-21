@@ -43,7 +43,7 @@ export const DATA = [
       {
         idLogro: "ghre",
         nombreLogro: "Examen salud",
-        imgLogo: "estrella"
+        imgLogo: "star"
       }
     ],
     subcategorias: [
@@ -177,12 +177,12 @@ export const DATA = [
       {
         idLogro: "dskfs",
         nombreLogro: "5K Montevideo corre",
-        imgLogo: "rayo"
+        imgLogo: "ray"
       },
       {
         idLogro: "dskfsdfdss",
         nombreLogro: "3 meses crossfit",
-        imgLogo: "copa"
+        imgLogo: "cup"
       }
     ],
     subcategorias: [

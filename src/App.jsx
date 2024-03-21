@@ -101,6 +101,7 @@ function nuevoProyecto(nombreP, tipoP) {
     favorito: false,
     archivado: false,
     tipo: tipoP,
+    logros: [],
     subcategorias: [],
   };
 }

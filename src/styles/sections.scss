@@ -151,32 +151,97 @@ footer {
     margin-left: 20px;
   }
   .subcat-list {
-    height: 374px;
+    height: 414px;
     margin: 20px 0;
     padding-bottom: 15px;
-    gap: 50px;
-    overflow-x: scroll;
-    .section-info {
-      width: 200px;
-      background-color: $gris-claro;
-      padding: 15px;
-      border-radius: 8px;
+    .subcats {
+      margin-top: 40px;
+      width: 100% !important;
+      gap: 30px;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+      padding-bottom:40px;
+      .subcat {
+        width: 200px;
+        height: 100%;
+        background-color: $celeste-3;
+        padding: 15px;
+        border-radius: 8px;
+        color: $violeta-4;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        .subcat-name {
+          font-size: 18px;
+        }
+      }
     }
   }
 }
 
 .tab-section {
-  width: 500px;
-  margin-left: auto;
+  margin-left: 50px;
+  margin-bottom: 40px;
   .nav-tabs {
     margin-left: auto;
+    .nav-item {
+      .nav-link {
+        background-color: $celeste-2;
+        color: $violeta-3;
+        border: none;
+        &.active {
+          background-color: $violeta-3;
+          color: $celeste;
+          font-weight: 600;
+        }
+        &:not(.active):hover {
+          color: $blanco;
+        }
+      }
+    }
   }
   .tab-content {
-    height: 100%;
-    background-color: $violeta;
+    width: 500px;
     padding: 15px;
-    border-radius: 8px;
+    height: 100%;
+    background-color: $violeta-3;
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
+    border-start-start-radius: 8px;
+    overflow-y: scroll;
+    .tab-pane {
+      height: inherit;
+    }
   }
 }
 .completed-subp {
+  height: inherit;
+  .filas {
+    gap:15px;
+    .fila {
+      .nombre {
+        width: 170px;
+        color: $celeste-2;
+      }
+      .info {
+        gap: 10px;
+        color: $celeste;
+        .d-flex {
+          gap: 5px;
+        }
+      }
+      .btn {
+        svg {
+          fill: $celeste-4;
+        }
+        &:hover {
+          svg {
+            fill: $blanco;
+          }
+        }
+      }
+    }
+  }
+  .msj {
+    height: 100%;
+    color: $celeste;
+  }
 }

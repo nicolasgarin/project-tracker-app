@@ -30,6 +30,7 @@
   &.btn-celeste {
     background-color: $celeste;
     color: $gris-claro;
+    border: 2px solid $celeste !important;
     svg {
       fill: $blanco;
     }
@@ -40,7 +41,7 @@
   }
 
   &.btn-celeste-4 {
-    background-color: $azul!important;
+    background-color: $azul !important;
     border: 1px solid $azul !important;
     &:hover {
       background-color: $azul-2;
@@ -144,6 +145,24 @@
     border-radius: 0px 0px 8px 8px;
     color: $gris-claro;
     font-weight: 500;
+    .subcat {
+      gap: 10px;
+      .fila-card {
+        width: fit-content;
+        .subcat-name {
+          width: 160px;
+        }
+        &:hover {
+          cursor: pointer;
+          .subcat-name {
+            font-weight: 600;
+          }
+          .celda-sm {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
     .vertical-btn {
       gap: 10px;
       svg {
@@ -194,12 +213,12 @@
         }
         &.deactive {
           svg {
-          animation: popUp 0.3s ease-in-out 0s 1 normal forwards;
+            animation: popUp 0.3s ease-in-out 0s 1 normal forwards;
           }
         }
         &.active {
           svg {
-          fill: $celeste-4;
+            fill: $celeste-4;
           }
         }
       }
@@ -266,6 +285,13 @@
   border-radius: 8px;
   border: 1px solid $gris-claro;
   background-color: $blanco;
+
+  &.celda-md {
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    border: none;
+  }
 
   &.celda-sm {
     height: 15px;
@@ -383,20 +409,34 @@ input:checked + .slider:before {
 }
 
 //MEDAL BOX
+.logros-tab {
+}
 .logros {
   row-gap: 15px;
+  height: 100%;
+  --bs-gutter-x: 0 !important;
   .medal-box {
     .medal {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
     }
     .medal-name {
       font-size: 14px;
+      color: $celeste-2;
     }
-    &:hover {
+    &.plus {
+      cursor: pointer;
+      .medal {
+        filter: grayscale(70%);
+      }
+      &:hover {
         transform: scale(1.1);
+        .medal {
+          filter: grayscale(0%);
+        }
+      }
     }
-  }  
+  }
 }
 
 .animation {

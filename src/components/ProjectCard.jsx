@@ -57,55 +57,56 @@ export default function ProjectCard({
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div className="d-flex justify-content-between">
-              <div className="subcat w-100">
+              <div className="subcat d-flex flex-column w-100">
                 {project.subcategorias.map((subcat) => {
                   if (!subcat.cerrada) {
                     return (
-                    <div
-                      className="fila-card d-flex align-items-center"
-                      id={subcat.idSubcat}
-                      key={subcat.idSubcat}
-                    >
-                      {subcat.nombreSubcat}
-                      {!project.archivado ? (
-                        <div
-                          className={`celda celda-sm celda-check ${
-                            subcat.diasCheckeados.filter(
-                              (dia) => dia.date == diaActual
-                            ).length > 0
-                              ? subcat.diasCheckeados.filter(
-                                  (dia) =>
-                                    dia.date == diaActual && dia.status == 0
-                                ).length > 0
-                                ? "check-1"
-                                : subcat.diasCheckeados.filter(
+                      <div
+                        className="fila-card d-flex align-items-center"
+                        id={subcat.idSubcat}
+                        key={subcat.idSubcat}
+                        onClick={() =>
+                          dispatch({
+                            tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
+                            payload: {
+                              id: project.id,
+                              idSubP: subcat.idSubcat,
+                            },
+                          })
+                        }
+                      >
+                        <div className="subcat-name">{subcat.nombreSubcat}</div>
+                        {!project.archivado ? (
+                          <div
+                            className={`celda celda-sm celda-check ${
+                              subcat.diasCheckeados.filter(
+                                (dia) => dia.date == diaActual
+                              ).length > 0
+                                ? subcat.diasCheckeados.filter(
                                     (dia) =>
-                                      dia.date == diaActual && dia.status == 1
+                                      dia.date == diaActual && dia.status == 0
                                   ).length > 0
-                                ? "check-2"
-                                : subcat.diasCheckeados.filter(
-                                    (dia) =>
-                                      dia.date == diaActual && dia.status == 2
-                                  ).length > 0
-                                ? "check-3"
-                                : "check-4"
-                              : ""
-                          }`}
-                          onClick={() =>
-                            dispatch({
-                              tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
-                              payload: {
-                                id: project.id,
-                                idSubP: subcat.idSubcat,
-                              },
-                            })
-                          }
-                        ></div>
-                      ) : (
-                        <div className="celda celda-sm celda-disabled"></div>
-                      )}
-                    </div>
-                  )}
+                                  ? "check-1"
+                                  : subcat.diasCheckeados.filter(
+                                      (dia) =>
+                                        dia.date == diaActual && dia.status == 1
+                                    ).length > 0
+                                  ? "check-2"
+                                  : subcat.diasCheckeados.filter(
+                                      (dia) =>
+                                        dia.date == diaActual && dia.status == 2
+                                    ).length > 0
+                                  ? "check-3"
+                                  : "check-4"
+                                : ""
+                            }`}
+                          ></div>
+                        ) : (
+                          <div className="celda celda-sm celda-disabled"></div>
+                        )}
+                      </div>
+                    );
+                  }
                 })}
               </div>
               <div className="vertical-btn d-flex flex-column">
