@@ -19,6 +19,7 @@ export const ACCIONES = {
   BORRAR_PROYECTO: "borrar-proyecto",
   FAV_PROYECTO: "fav-proyecto",
   ARCHIVAR_PROYECTO: "archivar-proyecto",
+  AGREGAR_LOGRO: "agregar-logro",
   AGREGAR_SUBPROYECTO: "agregar-subproyecto",
   BORRAR_SUBPROYECTO: "borrar-subproyecto",
   ACTUALIZAR_SUBPROYECTO: "actualizar-subproyecto",
@@ -28,11 +29,13 @@ export const ACCIONES = {
 function reducer(categorias, accion) {
   switch (accion.tipo) {
     case ACCIONES.ACTUALIZAR_DATA:
-      return categorias.sort(function(a, b) {
-        return a.archivado ? 1 : -1;
-    }).sort(function(a, b) {
-      return a.favorito ? -1 : 1;
-  });
+      return categorias
+        .sort(function (a, b) {
+          return a.archivado ? 1 : -1;
+        })
+        .sort(function (a, b) {
+          return a.favorito ? -1 : 1;
+        });
     case ACCIONES.AGREGAR_PROYECTO:
       return [
         ...categorias,
@@ -41,6 +44,13 @@ function reducer(categorias, accion) {
     case ACCIONES.BORRAR_PROYECTO:
       return categorias.filter(
         (categoria) => categoria.id !== accion.payload.id
+      );
+    case ACCIONES.AGREGAR_LOGRO:
+      return agregarLogro(
+        accion.payload.id,
+        accion.payload.nombreLogro,
+        accion.payload.imgLogro,
+        categorias
       );
     case ACCIONES.AGREGAR_SUBPROYECTO:
       return nuevoSubProyecto(
@@ -83,12 +93,12 @@ function reducer(categorias, accion) {
         accion.payload.idSubP,
         categorias
       );
-      case ACCIONES.FINALIZAR_SUBPROYECTO:
-        return finalizarSubProyecto(
-          accion.payload.id,
-          accion.payload.idSubP,
-          categorias
-        );
+    case ACCIONES.FINALIZAR_SUBPROYECTO:
+      return finalizarSubProyecto(
+        accion.payload.id,
+        accion.payload.idSubP,
+        categorias
+      );
     default:
       return categorias;
   }
@@ -98,9 +108,10 @@ function nuevoProyecto(nombreP, tipoP) {
   return {
     id: uuidv4(),
     nombre: nombreP,
+    tipo: tipoP,
+    fechaCreacion: diaActual,
     favorito: false,
     archivado: false,
-    tipo: tipoP,
     logros: [],
     subcategorias: [],
   };
@@ -113,7 +124,12 @@ function nuevoSubProyecto(nombreSubP, idP, categorias) {
         ...categoria,
         subcategorias: [
           ...categoria.subcategorias,
-          { nombreSubcat: nombreSubP, idSubcat: uuidv4(), cerrada: false, diasCheckeados: [] },
+          {
+            nombreSubcat: nombreSubP,
+            idSubcat: uuidv4(),
+            cerrada: false,
+            diasCheckeados: [],
+          },
         ],
       };
     } else {
@@ -130,6 +146,22 @@ function borrarSubProyecto(idP, idSubP, categorias) {
         subcategorias: categoria.subcategorias.filter(
           (cat) => cat.idSubcat !== idSubP
         ),
+      };
+    } else {
+      return categoria;
+    }
+  });
+}
+
+function agregarLogro(idP, nombreLogro, imgLogro, categorias) {
+  return categorias.map((categoria) => {
+    if (categoria.id === idP) {
+      return {
+        ...categoria,
+        logros: [
+          ...categoria.logros,
+          { idLogro: uuidv4(), nombreLogro: nombreLogro, imgLogo: imgLogro },
+        ],
       };
     } else {
       return categoria;
@@ -225,11 +257,11 @@ export default function App() {
 
   const newProjectEl = useRef();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch({
       tipo: ACCIONES.ACTUALIZAR_DATA,
-    })
-  },[categorias])
+    });
+  }, [categorias]);
 
   return (
     <>

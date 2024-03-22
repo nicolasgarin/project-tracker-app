@@ -37,6 +37,7 @@ export const DATA = [
     nombre: "EF",
     id: "ukjsdf21sdds",
     tipo: "salud",
+    fechaCreacion: "2024-1-15",
     favorito: false,
     archivado: false,
     logros: [
@@ -103,6 +104,7 @@ export const DATA = [
     nombre: "Programación",
     id: "adkj4s5la",
     tipo: "crecimiento",
+    fechaCreacion: "2023-12-16",
     favorito: true,
     archivado: false,
     logros: [],

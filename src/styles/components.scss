@@ -409,33 +409,17 @@ input:checked + .slider:before {
 }
 
 //MEDAL BOX
-.logros-tab {
-}
-.logros {
-  row-gap: 15px;
-  height: 100%;
-  --bs-gutter-x: 0 !important;
-  .medal-box {
-    .medal {
-      width: 90px;
-      height: 90px;
-    }
-    .medal-name {
-      font-size: 14px;
-      color: $celeste-2;
-    }
-    &.plus {
-      cursor: pointer;
-      .medal {
-        filter: grayscale(70%);
-      }
-      &:hover {
-        transform: scale(1.1);
-        .medal {
-          filter: grayscale(0%);
-        }
-      }
-    }
+.medal-box {
+  .medal {
+    width: 90px;
+    height: 90px;
+  }
+  .medal-name {
+    font-size: 14px;
+    color: $celeste-2;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 }
 

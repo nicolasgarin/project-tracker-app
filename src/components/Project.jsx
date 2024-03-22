@@ -7,6 +7,7 @@ import { useUserOptions } from "../context/UserOptionsContext";
 import SubprojectProgressList from "./SubprojectProgressList";
 import CompletedSubP from "./CompletedSubP";
 import Logros from "./Logros";
+import ProjectStats from "./ProjectStats";
 
 export default function Project({
   data,
@@ -212,6 +213,20 @@ export default function Project({
                     Logros
                   </button>
                 </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className="nav-link"
+                    id="stats-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#stats"
+                    type="button"
+                    role="tab"
+                    aria-controls="stats"
+                    aria-selected="false"
+                  >
+                    Estadísticas
+                  </button>
+                </li>
               </ul>
               <div className="tab-content" id="infoTabContent">
                 <div
@@ -231,6 +246,15 @@ export default function Project({
                   tabindex="0"
                 >
                   <Logros project={proyecto} dispatch={dispatch} />
+                </div>
+                <div
+                  className="tab-pane fade"
+                  id="stats"
+                  role="tabpanel"
+                  aria-labelledby="stats-tab"
+                  tabindex="0"
+                >
+                  <ProjectStats project={proyecto} />
                 </div>
               </div>
             </div>

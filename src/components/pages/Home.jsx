@@ -3,7 +3,7 @@ import "../../main.scss";
 import ProjectList from "../ProjectCardList";
 import { ACCIONES } from "../../App";
 import NewProject from "../NewProject";
-import { useUserOptions } from '../../context/DataContext';
+import { useUserOptions } from '../../context/UserOptionsContext';
 import ProjectProgressList from "../ProjectProgressList";
 
 export default function Home({
