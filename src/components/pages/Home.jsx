@@ -2,7 +2,6 @@ import React from "react";
 import "../../main.scss";
 import ProjectList from "../ProjectCardList";
 import { ACCIONES } from "../../App";
-import NewProject from "../NewProject";
 import { useUserOptions } from '../../context/UserOptionsContext';
 import ProjectProgressList from "../ProjectProgressList";
 
@@ -18,7 +17,7 @@ export default function Home({
   cardHeights,
   setCardHeights,
 }) {
-  const { theme } = useUserOptions();
+  const { theme, lang } = useUserOptions();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,11 +30,11 @@ export default function Home({
   }
 
   return (
-    <div className={theme}>
+    <div className={`home ${theme}`}>
       <form className="form-nuevo" onSubmit={handleSubmit}>
         <div className="container d-flex align-items-center justify-content-end">
           <label className="form-label" htmlFor="item">
-            Nuevo proyecto
+            {lang == "es" ? "Nuevo proyecto" : "New proyect"}
           </label>
           <input
             required
@@ -47,7 +46,7 @@ export default function Home({
             ref={newProjectEl}
           />
           <label className="form-label" htmlFor="categoria">
-            Categoría
+            {lang == "es" ? "Categoría" : "Category"}
           </label>
           <select
             required
@@ -58,14 +57,14 @@ export default function Home({
             onChange={(e) => setNuevoT(e.target.value)}
           >
             <option disabled value="">
-              Elige una categoría
+              {lang == "es" ? "Elige una categoría" : "Select a category"}
             </option>
-            <option value="salud">Salud</option>
-            <option value="crecimiento">Crecimiento</option>
-            <option value="esparcimiento">Esparcimiento</option>
+            <option value="Salud">{lang == "es" ? "Salud" : "Health"}</option>
+            <option value="Crecimiento">{lang == "es" ? "Crecimiento Personal" : "Personal growth"}</option>
+            <option value="Esparcimiento">{lang == "es" ? "Esparcimiento" : "Recreation"}</option>
           </select>
           <button type="submit" className="btn btn-violeta">
-            Crear
+            {lang == "es" ? "Crear" : "Create"}
           </button>
         </div>
       </form>
@@ -73,7 +72,7 @@ export default function Home({
         <div className="main-container">
           <section className="container">
             <div>
-            <h2 className="titulo">Proyectos</h2>
+            <h2 className="titulo">{lang == "es" ? "Proyectos" : "Projects"}</h2>
             </div>
             <ProjectList
               projects={data}
@@ -84,7 +83,7 @@ export default function Home({
             />
           </section>
           <section className="container">
-            <h2 className="titulo">Progresión</h2>
+            <h2 className="titulo">{lang == "es" ? "Progresión" : "Progress"}</h2>
             <ProjectProgressList data={data.filter((p)=> p.archivado == false)} diaActual={diaActual} />
           </section>
         </div>

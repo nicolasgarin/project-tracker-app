@@ -6,7 +6,7 @@ import { MdOutlineContactPage } from "react-icons/md";
 import { useUserOptions } from "../../context/UserOptionsContext";
 
 export default function Footer() {
-  const { theme, toggleTheme } = useUserOptions;
+  const { theme, toggleTheme } = useUserOptions();
   return (
     <footer className={theme}>
       <div className="container d-flex justify-content-between">

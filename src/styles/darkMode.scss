@@ -1,29 +1,29 @@
 //HEADER
 .header.dark {
-    background-color: $celeste;
-    color: $violeta-2;
+    //background-color: $celeste;
+    //color: $violeta-2;
 
     .logo {
-        color: $celeste;
+       // color: $celeste;
     }
 
     .switch-container {
         svg {
-            color: $violeta;
+         //   color: $violeta;
         }
     }
 }
 
 //FOOTER
 footer.dark {
-    background-color: $celeste;
+    //background-color: $celeste;
 
     .texto-footer {
-        color: $violeta-2;
+       // color: $violeta-2;
     }
 }
 
 //MAIN
-body.dark {
+.home.dark, .project.dark {
     background-image: url("https://raw.githubusercontent.com/nicolasgarin/json/main/background-dark.png");
 }

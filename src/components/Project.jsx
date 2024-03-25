@@ -69,119 +69,123 @@ export default function Project({
             </form>
           </div>
           <div className="subcat-list d-flex">
-          <div className="subcats row d-flex">
-            {proyecto.subcategorias.map((subcat) => {
-              if (!subcat.cerrada) {
-                return (
-                    <div className="subcat d-flex flex-column justify-content-between" key={subcat.idSubcat}>
-                        <div className="fila-1 d-flex align-items-center justify-content-between">
-                          <div className="subcat-name texto-imp">{subcat.nombreSubcat}</div>
-                          <button
-                            onClick={() =>
-                              dispatch({
-                                tipo: ACCIONES.BORRAR_SUBPROYECTO,
-                                payload: { id: id, idSubP: subcat.idSubcat },
-                              })
-                            }
-                            className="btn btn-rojo square sq-sm"
-                          >
-                            <ImCross className="x" />
-                          </button>
-                        </div>
-                        {!subcat.cerrada ? (
-                          <div
-                            className={`celda celda-check ${
-                              subcat.diasCheckeados.filter(
-                                (dia) => dia.date == diaActual
-                              ).length > 0
-                                ? subcat.diasCheckeados.filter(
-                                    (dia) =>
-                                      dia.date == diaActual && dia.status == 0
-                                  ).length > 0
-                                  ? "check-1"
-                                  : subcat.diasCheckeados.filter(
-                                      (dia) =>
-                                        dia.date == diaActual && dia.status == 1
-                                    ).length > 0
-                                  ? "check-2"
-                                  : subcat.diasCheckeados.filter(
-                                      (dia) =>
-                                        dia.date == diaActual && dia.status == 2
-                                    ).length > 0
-                                  ? "check-3"
-                                  : "check-4"
-                                : ""
-                            }`}
-                            onClick={() =>
-                              dispatch({
-                                tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
-                                payload: {
-                                  id: proyecto.id,
-                                  idSubP: subcat.idSubcat,
-                                },
-                              })
-                            }
-                          ></div>
-                        ) : null}
-
-                        <div className="subcat-info">
-                          <div>Total : {subcat.diasCheckeados.length}</div>
-                          <div className="d-flex align-items-center">
-                            <div className="celda check-1"></div>
-                            {
-                              subcat.diasCheckeados.filter(
-                                (dia) => dia.status == 0
-                              ).length
-                            }
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <div className="celda check-2"></div>
-                            {
-                              subcat.diasCheckeados.filter(
-                                (dia) => dia.status == 1
-                              ).length
-                            }
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <div className="celda check-3"></div>
-                            {
-                              subcat.diasCheckeados.filter(
-                                (dia) => dia.status == 2
-                              ).length
-                            }
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <div className="celda check-4"></div>
-                            {
-                              subcat.diasCheckeados.filter(
-                                (dia) => dia.status == 3
-                              ).length
-                            }
-                          </div>
-                          {subcat.cerrada ? (
-                            <div className="cerrado">Cerrado</div>
-                          ) : null}
-
+            <div className="subcats row d-flex">
+              {proyecto.subcategorias.map((subcat) => {
+                if (!subcat.cerrada) {
+                  return (
+                    <div
+                      className="subcat d-flex flex-column justify-content-between"
+                      key={subcat.idSubcat}
+                    >
+                      <div className="fila-1 d-flex align-items-center justify-content-between">
+                        <div className="subcat-name texto-imp">
+                          {subcat.nombreSubcat}
                         </div>
                         <button
-                            onClick={() =>
-                              dispatch({
-                                tipo: ACCIONES.FINALIZAR_SUBPROYECTO,
-                                payload: {
-                                  id: id,
-                                  idSubP: subcat.idSubcat,
-                                },
-                              })
-                            }
-                            className="btn btn-celeste"
-                          >
-                            Finalizar
-                          </button>
+                          onClick={() =>
+                            dispatch({
+                              tipo: ACCIONES.BORRAR_SUBPROYECTO,
+                              payload: { id: id, idSubP: subcat.idSubcat },
+                            })
+                          }
+                          className="btn btn-rojo square sq-sm"
+                        >
+                          <ImCross className="x" />
+                        </button>
                       </div>
-                );
-              }
-            })}
-                              </div>
+                      {!subcat.cerrada ? (
+                        <div
+                          className={`celda celda-check ${
+                            subcat.diasCheckeados.filter(
+                              (dia) => dia.date == diaActual
+                            ).length > 0
+                              ? subcat.diasCheckeados.filter(
+                                  (dia) =>
+                                    dia.date == diaActual && dia.status == 0
+                                ).length > 0
+                                ? "check-1"
+                                : subcat.diasCheckeados.filter(
+                                    (dia) =>
+                                      dia.date == diaActual && dia.status == 1
+                                  ).length > 0
+                                ? "check-2"
+                                : subcat.diasCheckeados.filter(
+                                    (dia) =>
+                                      dia.date == diaActual && dia.status == 2
+                                  ).length > 0
+                                ? "check-3"
+                                : "check-4"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            dispatch({
+                              tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
+                              payload: {
+                                id: proyecto.id,
+                                idSubP: subcat.idSubcat,
+                              },
+                            })
+                          }
+                        ></div>
+                      ) : null}
+
+                      <div className="subcat-info">
+                        <div>Total : {subcat.diasCheckeados.length}</div>
+                        <div className="d-flex align-items-center">
+                          <div className="celda check-1"></div>
+                          {
+                            subcat.diasCheckeados.filter(
+                              (dia) => dia.status == 0
+                            ).length
+                          }
+                        </div>
+                        <div className="d-flex align-items-center">
+                          <div className="celda check-2"></div>
+                          {
+                            subcat.diasCheckeados.filter(
+                              (dia) => dia.status == 1
+                            ).length
+                          }
+                        </div>
+                        <div className="d-flex align-items-center">
+                          <div className="celda check-3"></div>
+                          {
+                            subcat.diasCheckeados.filter(
+                              (dia) => dia.status == 2
+                            ).length
+                          }
+                        </div>
+                        <div className="d-flex align-items-center">
+                          <div className="celda check-4"></div>
+                          {
+                            subcat.diasCheckeados.filter(
+                              (dia) => dia.status == 3
+                            ).length
+                          }
+                        </div>
+                        {subcat.cerrada ? (
+                          <div className="cerrado">Cerrado</div>
+                        ) : null}
+                      </div>
+                      <button
+                        onClick={() =>
+                          dispatch({
+                            tipo: ACCIONES.FINALIZAR_SUBPROYECTO,
+                            payload: {
+                              id: id,
+                              idSubP: subcat.idSubcat,
+                            },
+                          })
+                        }
+                        className="btn btn-celeste"
+                      >
+                        Finalizar
+                      </button>
+                    </div>
+                  );
+                }
+              })}
+            </div>
 
             <div className="tab-section d-flex flex-column">
               <ul className="nav nav-tabs" id="infoTab" role="tablist">
@@ -224,7 +228,7 @@ export default function Project({
                     aria-controls="stats"
                     aria-selected="false"
                   >
-                    Estadísticas
+                    Info
                   </button>
                 </li>
               </ul>

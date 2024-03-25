@@ -43,7 +43,9 @@ export default function Logros({ project, dispatch }) {
   return (
     <>
       <div className="logros-tab">
+
         <div className="logros-container">
+        {project.logros.length > 0 ? (
           <div className="logros d-flex row">
             {project.logros.map((logro) => {
               return (
@@ -60,7 +62,13 @@ export default function Logros({ project, dispatch }) {
               );
             })}
           </div>
+                  ) : (
+                    <div className="msj d-flex align-items-center justify-content-center texto-imp">
+                    Todavía no has creado logros
+                  </div>
+                  )}
         </div>
+
         <div className="logros-form d-flex align-items-center">
           <form className="d-flex align-items-center justify-content-between">
           <input type="text" id="nombreNuevoLogro" value={nombreLogro} onChange={e => setNombreLogro(e.target.value)} required />

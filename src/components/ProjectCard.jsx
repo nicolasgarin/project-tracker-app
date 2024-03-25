@@ -46,9 +46,9 @@ export default function ProjectCard({
               ) : (
                 <div>{project.nombre}</div>
               )}
-              {project.tipo == "salud" ? (
+              {project.tipo == "Salud" ? (
                 <BsHeartPulseFill />
-              ) : project.tipo == "crecimiento" ? (
+              ) : project.tipo == "Crecimiento" ? (
                 <FaBrain />
               ) : (
                 <FaPaintBrush />
