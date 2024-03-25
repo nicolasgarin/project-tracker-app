@@ -20,8 +20,7 @@ export default function Project({
   const [proyecto, setProyecto] = useState(
     data.filter((proyecto) => proyecto.id == id)[0]
   );
-  const [idSubP, setIdSubP] = useState();
-  const { theme } = useUserOptions();
+  const { theme, lang } = useUserOptions();
 
   useEffect(() => {
     setProyecto(data.filter((proyecto) => proyecto.id == id)[0]);
@@ -47,12 +46,12 @@ export default function Project({
                   <FaAngleLeft />
                 </button>
               </Link>
-              <h2 className="texto-imp">{proyecto.nombre}</h2>
+              <h2 className="texto-imp project-title">{proyecto.nombre}</h2>
             </div>
             <form className="form-nueva-subcat" onSubmit={handleSubP}>
               <div className="container d-flex align-items-center justify-content-end">
                 <label className="form-label" htmlFor="item">
-                  Nuevo Subproyecto
+                  {lang == "es" ? "Nuevo subproyecto" : "New subproject"}
                 </label>
                 <input
                   required
@@ -63,7 +62,7 @@ export default function Project({
                   id="item"
                 />
                 <button type="submit" className="btn btn-violeta">
-                  Crear
+                  {lang == "es" ? "Crear" : "Create"}
                 </button>
               </div>
             </form>
@@ -179,7 +178,7 @@ export default function Project({
                         }
                         className="btn btn-celeste"
                       >
-                        Finalizar
+                        {lang == "es" ? "Finalizar" : "Finish"}
                       </button>
                     </div>
                   );
@@ -200,7 +199,7 @@ export default function Project({
                     aria-controls="subproyectos-completados"
                     aria-selected="true"
                   >
-                    Completados
+                    {lang == "es" ? "Completados" : "Completed"}
                   </button>
                 </li>
                 <li className="nav-item" role="presentation">
@@ -214,7 +213,7 @@ export default function Project({
                     aria-controls="logros"
                     aria-selected="false"
                   >
-                    Logros
+                    {lang == "es" ? "Logros" : "Achievements"}
                   </button>
                 </li>
                 <li className="nav-item" role="presentation">

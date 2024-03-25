@@ -1,28 +1,29 @@
 //SECTIONS
 
 .home,
-.project {
-  background-image: url("https://raw.githubusercontent.com/nicolasgarin/json/main/background.png");
+.project,
+.instructions {
+  background-image: url("../../public/background.png");
 }
-header {
+.header {
   background-color: $violeta-4;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid $violeta-4;
   padding: 20px 0;
-
   .logo {
     margin-right: 15px;
   }
-
   .color-1 {
     color: $celeste;
   }
-
   .color-2 {
     color: $celeste-3;
   }
-
   .options {
     gap: 30px;
+    .qmark {
+      height: 28px;
+      width: 28px;
+    }
     .logo-cont {
       height: 28px;
       width: 28px;
@@ -38,11 +39,9 @@ header {
     }
     .switch-container {
       gap: 5px;
-
       svg {
         color: $celeste-2;
       }
-
       .switch {
         position: relative;
         display: inline-block;
@@ -50,15 +49,11 @@ header {
         width: 60px;
         height: 34px;
       }
-
-      /* Hide default HTML checkbox */
       .switch input {
         opacity: 0;
         width: 0;
         height: 0;
       }
-
-      /* The slider */
       .slider {
         position: absolute;
         cursor: pointer;
@@ -70,7 +65,6 @@ header {
         -webkit-transition: 0.4s;
         transition: 0.4s;
       }
-
       .slider:before {
         position: absolute;
         content: "";
@@ -82,25 +76,20 @@ header {
         -webkit-transition: 0.4s;
         transition: 0.4s;
       }
-
       input:checked + .slider {
         background-color: $celeste;
       }
-
       input:focus + .slider {
         box-shadow: 0 0 1px $celeste;
       }
-
       input:checked + .slider:before {
         -webkit-transform: translateX(26px);
         -ms-transform: translateX(26px);
         transform: translateX(26px);
       }
-
       .slider.round {
         border-radius: 34px;
       }
-
       .slider.round:before {
         border-radius: 50%;
       }
@@ -131,31 +120,26 @@ footer {
 
 .main {
   padding: 20px 0;
-
   .main-container {
     display: flex;
     flex-direction: column;
     gap: 30px;
   }
-
   .card-container {
     .row {
       width: 100%;
     }
   }
-
   .message {
     color: $celeste-3;
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 15px;
   }
-
   .prog-table-item {
     color: $celeste-3;
     font-weight: 500;
     font-size: 18px;
-
     .link-fila {
       text-decoration: none;
       color: unset;
@@ -165,21 +149,17 @@ footer {
       margin-right: 15px;
       position: relative;
     }
-
-    .nombre-fila:hover {
-      color: $blanco;
+    .plm:hover {
+      color: $violeta-2;
     }
-
     .nombre-fila::before {
       transform: scaleX(0);
       transform-origin: bottom right;
     }
-
     .nombre-fila:hover::before {
       transform: scaleX(1);
       transform-origin: bottom left;
     }
-
     .nombre-fila::before {
       content: " ";
       display: block;
@@ -194,7 +174,6 @@ footer {
       transition: transform 0.3s ease;
     }
   }
-
   .nombre-fila {
     width: 150px;
     margin-bottom: 5px;
@@ -203,13 +182,11 @@ footer {
       gap: 2px;
     }
   }
-
   .num {
     background-color: $violeta-3;
     color: $gris-claro;
     font-weight: 600;
   }
-
   .letra {
     background-color: $celeste-3;
     color: $gris-claro;
@@ -221,10 +198,8 @@ footer {
   .form-nueva-subcat {
     color: $violeta-2;
     padding: 10px 0;
-
     .container {
       gap: 10px;
-
       .input-form {
         border-radius: 6px;
       }
@@ -236,6 +211,9 @@ footer {
   h2 {
     margin-bottom: 0;
     margin-left: 20px;
+  }
+  .project-title {
+    color: $violeta-3;
   }
   .subcat-list {
     height: 414px;
@@ -289,8 +267,6 @@ footer {
   }
   .tab-content {
     width: 500px;
-    //padding: 15px;
-    //height: 100%;
     height: 297px;
     background-color: $violeta-3;
     border-end-end-radius: 8px;

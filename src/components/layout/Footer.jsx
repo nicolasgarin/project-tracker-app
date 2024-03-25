@@ -1,17 +1,22 @@
 import React from "react";
-import logo from "../../assets/logo-celeste-circulo.svg";
+import logoceleste from "../../assets/logo-celeste-circulo.svg";
+import logovioleta from "../../assets/logo-violeta-circulo.svg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineContactPage } from "react-icons/md";
 import { useUserOptions } from "../../context/UserOptionsContext";
 
 export default function Footer() {
-  const { theme, toggleTheme } = useUserOptions();
+  const { theme } = useUserOptions();
   return (
     <footer className={theme}>
       <div className="container d-flex justify-content-between">
         <div className="texto-footer">
-          <img src={logo} className="logo" alt="project tracker logo" />
+          <img
+            src={theme == "light" ? logoceleste : logovioleta}
+            className="logo"
+            alt="project tracker logo"
+          />
         </div>
 
         <div className="section-icons">

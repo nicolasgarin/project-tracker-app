@@ -4,6 +4,7 @@ import esLogo from "../../assets/esp.svg";
 import enLogo from "../../assets/eng.svg";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useUserOptions } from "../../context/UserOptionsContext";
+import { HiQuestionMarkCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -16,6 +17,9 @@ export default function Header() {
           <img src={logo} className="logo" alt="project tracker logo" />
         </Link>
         <div className="options d-flex align-items-center">
+          <Link to={"/instructions"}>
+            <HiQuestionMarkCircle className="qmark color-1" />
+          </Link>
           <div className="switch-container d-flex align-items-center">
             <IoMoon />
             <label className="switch">

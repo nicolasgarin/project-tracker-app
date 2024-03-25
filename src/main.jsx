@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { DataProvider } from "./context/DataContext";
-import { UserOptionsProvider } from './context/UserOptionsContext.jsx';
+import { UserOptionsProvider } from "./context/UserOptionsContext.jsx";
 
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";

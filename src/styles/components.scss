@@ -1,7 +1,7 @@
 //COMPONENTS
 
 .titulo {
-  color: $violeta-2;
+  color: $violeta-3;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -69,7 +69,6 @@
     }
     &:hover {
       border: 2px solid $blanco !important;
-
       .x {
         fill: $blanco;
         transition: 0.3s;
@@ -94,7 +93,6 @@
   .open {
     display: none;
   }
-
   .closed {
     display: block;
     color: $azul-2;
@@ -116,7 +114,6 @@
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border: none !important;
   margin-bottom: 45px;
-
   &.disabled {
     filter: grayscale(80%);
   }
@@ -124,11 +121,9 @@
   .card-header {
     background-color: $violeta-3 !important;
     padding: 10px 15px;
-
     .link-titulo {
       color: unset;
       text-decoration: none;
-
       &:hover {
         color: $blanco !important;
       }
@@ -229,7 +224,6 @@
       align-items: center;
       gap: 15px;
       margin-top: 15px;
-
       .btn {
         height: fit-content;
       }
@@ -242,15 +236,12 @@
   border-bottom: 1px solid $negro;
   color: $gris-claro;
   padding: 10px 0;
-
   .container {
     gap: 10px;
-
     .input-form {
       border-radius: 6px;
       height: 37.33px;
     }
-
     .form-label {
       margin-bottom: 0;
       font-size: 16px;
@@ -285,47 +276,38 @@
   border-radius: 8px;
   border: 1px solid $gris-claro;
   background-color: $blanco;
-
   &.celda-md {
     height: 20px;
     width: 20px;
     border-radius: 4px;
     border: none;
   }
-
   &.celda-sm {
     height: 15px;
     width: 15px;
     border-radius: 4px;
     border: none;
   }
-
   &.celda-disabled {
     background-color: $gris-claro;
   }
-
   &.celda-check {
     height: 15px;
     width: 15px;
-
     &:hover {
       cursor: pointer;
     }
   }
-
   &.check-1 {
     background-color: $verde;
     animation: popUp 0.3s ease-in-out 0s 1 normal forwards;
   }
-
   &.check-2 {
     background-color: $verde-2;
   }
-
   &.check-3 {
     background-color: $verde-3;
   }
-
   &.check-4 {
     background-color: $amarillo;
   }
@@ -342,6 +324,9 @@
     }
     .month-setter {
       width: 215px;
+      .month-name {
+        color: $violeta-3;
+      }
     }
   }
 }

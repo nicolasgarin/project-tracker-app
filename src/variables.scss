@@ -1,5 +1,4 @@
 //GLOBALES
-
 $background-color: #fee2e2;
 
 //PALETA DE COLORES
@@ -16,14 +15,14 @@ $azul: #3c6385;
 $azul-2: #1e3052;
 
 $violeta: #b59dc5;
-$violeta-2 :#6a5e72;
+$violeta-2: #6a5e72;
 $violeta-3: #563444;
 $violeta-4: #452f39;
 
 $verde: #a6d886;
-$verde-2: #76B947;
+$verde-2: #76b947;
 $verde-3: #457146;
-$verde-4: #2F5233;
+$verde-4: #2f5233;
 
 $amarillo: #faf87a;
 $rojo: #df7373;
@@ -31,23 +30,22 @@ $rojo-2: #a84848;
 $rojo-3: #784444;
 
 //TAMAÑO
-
 h2 {
-    font-size: 1.5rem !important;
+  font-size: 1.5rem !important;
 }
 
 h3 {
-    font-size: 1.25rem !important;
+  font-size: 1.25rem !important;
 }
 
 .texto-imp {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .texto-violeta {
-    color: $violeta-3;
+  color: $violeta-3;
 }
 
 .texto-celeste {
-    color: $celeste-3;
+  color: $celeste-3;
 }

@@ -1,29 +1,32 @@
 //HEADER
 .header.dark {
-    //background-color: $celeste;
-    //color: $violeta-2;
-
-    .logo {
-       // color: $celeste;
-    }
-
-    .switch-container {
-        svg {
-         //   color: $violeta;
-        }
-    }
+  border-bottom: 2px solid $celeste-3;
 }
 
 //FOOTER
 footer.dark {
-    //background-color: $celeste;
-
-    .texto-footer {
-       // color: $violeta-2;
-    }
+  background-color: $celeste-3;
 }
 
 //MAIN
-.home.dark, .project.dark {
-    background-image: url("https://raw.githubusercontent.com/nicolasgarin/json/main/background-dark.png");
+.home.dark,
+.project.dark,
+.instructions.dark {
+  background-image: url("../../public/background-dark.png");
+  .titulo {
+    color: $celeste;
+  }
+  .progress-list {
+    .month-name {
+      color: $celeste;
+    }
+  }
+  .prog-table-item {
+    .plm:hover {
+      color: $blanco;
+    }
+  }
+  .project-title {
+    color: $celeste;
+  }
 }

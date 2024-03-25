@@ -6,6 +6,7 @@ import Home from "./components/pages/Home";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Project from "./components/Project";
+import Instructions from "./components/pages/Instructions";
 
 const objDate = new Date();
 const year = objDate.getFullYear();
@@ -282,6 +283,12 @@ export default function App() {
               cardHeights={cardHeights}
               setCardHeights={setCardHeights}
             />
+          }
+        />
+        <Route
+          path="/instructions"
+          element={
+            <Instructions />
           }
         />
         <Route path="/projects">

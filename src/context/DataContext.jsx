@@ -44,8 +44,8 @@ export const DATA = [
       {
         idLogro: "ghre",
         nombreLogro: "Examen salud",
-        imgLogo: "star"
-      }
+        imgLogo: "star",
+      },
     ],
     subcategorias: [
       {
@@ -55,25 +55,25 @@ export const DATA = [
         diasCheckeados: [
           {
             date: "2024-1-15",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-1-23",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-2-3",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-3-1",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-3-2",
-            satus: 2
-          }
-        ]
+            satus: 2,
+          },
+        ],
       },
       {
         nombreSubcat: "Examen Deporte",
@@ -82,23 +82,23 @@ export const DATA = [
         diasCheckeados: [
           {
             date: "2024-2-7",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-2-8",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-2-9",
-            status: 2
+            status: 2,
           },
           {
             date: "2024-2-10",
-            status: 2
-          }
-        ]
-      }
-    ]
+            status: 2,
+          },
+        ],
+      },
+    ],
   },
   {
     nombre: "Programación",
@@ -116,21 +116,21 @@ export const DATA = [
         diasCheckeados: [
           {
             date: "2023-12-16",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-1-18",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-2-3",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-2-7",
-            status: 2
-          }
-        ]
+            status: 2,
+          },
+        ],
       },
       {
         nombreSubcat: "Liferay",
@@ -139,35 +139,35 @@ export const DATA = [
         diasCheckeados: [
           {
             date: "2024-1-6",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-1-11",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-1-13",
-            status: 3
+            status: 3,
           },
           {
             date: "2024-1-18",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-3-1",
-            status: 2
+            status: 2,
           },
-            {
+          {
             date: "2024-3-3",
-            status: 0
+            status: 0,
           },
-            {
+          {
             date: "2024-3-4",
-            status: 1
-          }
-        ]
-      }
-    ]
+            status: 1,
+          },
+        ],
+      },
+    ],
   },
   {
     nombre: "Entrenamiento",
@@ -180,13 +180,13 @@ export const DATA = [
       {
         idLogro: "dskfs",
         nombreLogro: "5K Montevideo corre",
-        imgLogo: "ray"
+        imgLogo: "ray",
       },
       {
         idLogro: "dskfsdfdss",
         nombreLogro: "3 meses crossfit",
-        imgLogo: "cup"
-      }
+        imgLogo: "cup",
+      },
     ],
     subcategorias: [
       {
@@ -196,27 +196,26 @@ export const DATA = [
         diasCheckeados: [
           {
             date: "2024-2-17",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-2-20",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-2-21",
-            status: 1
+            status: 1,
           },
           {
             date: "2024-3-3",
-            status: 0
+            status: 0,
           },
           {
             date: "2024-3-6",
-            satus: 3
-          }
-        ]
-      }
-    ]
-  }
-]
-
+            satus: 3,
+          },
+        ],
+      },
+    ],
+  },
+];

@@ -2,7 +2,7 @@ import React from "react";
 import "../../main.scss";
 import ProjectList from "../ProjectCardList";
 import { ACCIONES } from "../../App";
-import { useUserOptions } from '../../context/UserOptionsContext';
+import { useUserOptions } from "../../context/UserOptionsContext";
 import ProjectProgressList from "../ProjectProgressList";
 
 export default function Home({
@@ -34,7 +34,7 @@ export default function Home({
       <form className="form-nuevo" onSubmit={handleSubmit}>
         <div className="container d-flex align-items-center justify-content-end">
           <label className="form-label" htmlFor="item">
-            {lang == "es" ? "Nuevo proyecto" : "New proyect"}
+            {lang == "es" ? "Nuevo proyecto" : "New project"}
           </label>
           <input
             required
@@ -60,8 +60,12 @@ export default function Home({
               {lang == "es" ? "Elige una categoría" : "Select a category"}
             </option>
             <option value="Salud">{lang == "es" ? "Salud" : "Health"}</option>
-            <option value="Crecimiento">{lang == "es" ? "Crecimiento Personal" : "Personal growth"}</option>
-            <option value="Esparcimiento">{lang == "es" ? "Esparcimiento" : "Recreation"}</option>
+            <option value="Crecimiento">
+              {lang == "es" ? "Crecimiento Personal" : "Personal growth"}
+            </option>
+            <option value="Esparcimiento">
+              {lang == "es" ? "Esparcimiento" : "Recreation"}
+            </option>
           </select>
           <button type="submit" className="btn btn-violeta">
             {lang == "es" ? "Crear" : "Create"}
@@ -72,7 +76,9 @@ export default function Home({
         <div className="main-container">
           <section className="container">
             <div>
-            <h2 className="titulo">{lang == "es" ? "Proyectos" : "Projects"}</h2>
+              <h2 className="titulo">
+                {lang == "es" ? "Proyectos" : "Projects"}
+              </h2>
             </div>
             <ProjectList
               projects={data}
@@ -83,8 +89,13 @@ export default function Home({
             />
           </section>
           <section className="container">
-            <h2 className="titulo">{lang == "es" ? "Progresión" : "Progress"}</h2>
-            <ProjectProgressList data={data.filter((p)=> p.archivado == false)} diaActual={diaActual} />
+            <h2 className="titulo">
+              {lang == "es" ? "Progresión" : "Progress"}
+            </h2>
+            <ProjectProgressList
+              data={data.filter((p) => p.archivado == false)}
+              diaActual={diaActual}
+            />
           </section>
         </div>
       </div>

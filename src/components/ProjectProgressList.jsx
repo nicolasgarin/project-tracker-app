@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-
-//const diaActual = day + "-" + month + "-" + year;
+import { useUserOptions } from "../context/UserOptionsContext";
 
 export default function ProjectProgressList({ data }) {
+  const { theme, lang } = useUserOptions();
   const dateActual = new Date();
   const [year, setYear] = useState(dateActual.getFullYear());
   const [month, setMonth] = useState(dateActual.getMonth() + 1);
@@ -21,7 +20,7 @@ export default function ProjectProgressList({ data }) {
 
   for (let i = 1; i <= cantDias; i++) {
     let letter = new Date(year, month - 1, i)
-      .toLocaleDateString("ES", {
+      .toLocaleDateString(lang, {
         weekday: "long",
       })[0]
       .toUpperCase();
@@ -33,7 +32,13 @@ export default function ProjectProgressList({ data }) {
       </div>
     );
     celdasMesLetras.push(
-      <div className={"celda letra d-flex align-items-center justify-content-center"}>{letter}</div>
+      <div
+        className={
+          "celda letra d-flex align-items-center justify-content-center"
+        }
+      >
+        {letter}
+      </div>
     );
   }
 
@@ -77,7 +82,7 @@ export default function ProjectProgressList({ data }) {
   function getMonthName(monthNumber) {
     let varDate = new Date();
     varDate.setMonth(monthNumber - 1);
-    return varDate.toLocaleString("es-US", { month: "long" });
+    return varDate.toLocaleString(`${lang}-US`, { month: "long" });
   }
 
   function updateCantDias() {
@@ -112,7 +117,7 @@ export default function ProjectProgressList({ data }) {
           >
             <FaAngleLeft />
           </button>
-          <div className="texto-imp texo-violeta">
+          <div className="texto-imp month-name">
             {capitalizeFirstLetter(getMonthName(month))}
           </div>
           <button
@@ -194,7 +199,7 @@ export default function ProjectProgressList({ data }) {
           return (
             <div className="prog-table-item d-flex align-items-center">
               <Link className="link-fila" to={`/projects/${categoria.id}`}>
-                <div className="nombre-fila texto-imp texto-celeste">
+                <div className="nombre-fila plm texto-imp texto-celeste">
                   {categoria.nombre}
                 </div>
               </Link>
@@ -203,7 +208,9 @@ export default function ProjectProgressList({ data }) {
           );
         })
       ) : (
-        <div className="message">Ingrese nuevos proyectos</div>
+        <div className="message">
+          {lang === "es" ? "Ingrese nuevos proyectos" : "Enter new projects"}
+        </div>
       )}
     </div>
   );

@@ -4,54 +4,43 @@
 @import "./styles/darkMode.scss";
 
 @keyframes popUp {
-	0% {
-		transform: scale(0.5);
-	}
-
-	50% {
-		transform: scale(1.3);
-	}
-
-	100% {
-		transform: scale(1);
-	}
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes popUp-2 {
-	0% {
-		transform: scale(0.5);
-	}
-
-	50% {
-		transform: scale(1.3);
-	}
-
-	100% {
-		transform: scale(1);
-	}
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-//@font-face {
-//    font-family: "Dangrek";
-//    src: local("Dangrek"), url("./assets/fonts/Dangrek-Regular.ttf");
-//}
 
 * {
   font-family: Rubik, sans-serif;
 }
 
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px transparent;
   border-radius: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: $violeta-2;
   border-radius: 10px;

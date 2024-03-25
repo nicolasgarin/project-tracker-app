@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
+import { useUserOptions } from "../context/UserOptionsContext";
 
 export default function SubprojectProgressList({ project }) {
+  const { lang } = useUserOptions();
   const dateActual = new Date();
   const [year, setYear] = useState(dateActual.getFullYear());
   const [month, setMonth] = useState(dateActual.getMonth() + 1);
@@ -18,7 +20,7 @@ export default function SubprojectProgressList({ project }) {
 
     for (let i = 1; i <= cantDias; i++) {
       let letter = new Date(year, month - 1, i)
-        .toLocaleDateString("ES", {
+        .toLocaleDateString(lang, {
           weekday: "long",
         })[0]
         .toUpperCase();
@@ -51,7 +53,6 @@ export default function SubprojectProgressList({ project }) {
         });
       }
     });
-  
 
   function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
@@ -87,7 +88,7 @@ export default function SubprojectProgressList({ project }) {
       dateActual.getDate()
     );
     nameDate.setMonth(monthNumber - 1);
-    return nameDate.toLocaleString("es-US", { month: "long" });
+    return nameDate.toLocaleString(`${lang}-US`, { month: "long" });
   }
 
   function updateCantDias() {
@@ -97,7 +98,7 @@ export default function SubprojectProgressList({ project }) {
   return (
     <>
       <div className="progress-list card-container">
-        <h3 className="titulo">Progresión</h3>
+        <h3 className="titulo">{lang == "es" ? "Progresión" : "Progress"}</h3>
         <div className="date-setter d-flex">
           <select
             className="select-year"
@@ -124,7 +125,7 @@ export default function SubprojectProgressList({ project }) {
             >
               <FaAngleLeft />
             </button>
-            <div className="texto-imp texto-violeta">
+            <div className="texto-imp month-name">
               {capitalizeFirstLetter(getMonthName(month))}
             </div>
             <button
@@ -193,7 +194,7 @@ export default function SubprojectProgressList({ project }) {
 
             return (
               <div className="prog-table-item d-flex align-items-center">
-                <div className="nombre-fila">{subcat.nombreSubcat}</div>
+                <div className="nombre-fila texto-imp">{subcat.nombreSubcat}</div>
                 <div className="tabla-dias d-flex">{celdasP}</div>
               </div>
             );

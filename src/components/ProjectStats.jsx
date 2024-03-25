@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useUserOptions } from "../context/UserOptionsContext";
 
 export default function ProjectStats({ project }) {
   const [stats, setStats] = useState();
+  const { lang } = useUserOptions();
 
   useEffect(() => {
     statsUpdate();
@@ -52,17 +54,17 @@ export default function ProjectStats({ project }) {
         <div className="content d-flex">
           <div className="section-1 texto-imp texto-celeste">
             <div className="subsect">
-              <div>Fecha de creación: {stats?.creacion}</div>
-              <div>Tipo: {project?.tipo}</div>
+              <div>{lang === "es" ? "Fecha de creación:" : "Creation date:"} {stats?.creacion}</div>
+              <div>{lang === "es" ? "Tipo:" : "Type:"} {project?.tipo}</div>
             </div>
             <div className="subsect">
-              <div className="subtitulo">Subproyectos</div>
+              <div className="subtitulo">{lang === "es" ? "Subproyectos:" : "Subprojects:"}</div>
               <div>Total: {stats?.cantSubproyectos}</div>
-              <div>Activos: {stats?.cantActivos}</div>
-              <div>Cerrados: {stats?.cantCerradas}</div>
+              <div>{lang === "es" ? "Activos:" : "Active:"} {stats?.cantActivos}</div>
+              <div>{lang === "es" ? "Cerrados:" : "Closed:"} {stats?.cantCerradas}</div>
             </div>
             <div className="subsect">
-              <div className="subtitulo">Logros</div>
+              <div className="subtitulo">{lang === "es" ? "Logros" : "Achievements"}</div>
               <div>Cantidad: {stats?.logros}</div>
             </div>
           </div>
