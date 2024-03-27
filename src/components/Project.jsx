@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ACCIONES } from "../App";
+import { FaCheck } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import { useUserOptions } from "../context/UserOptionsContext";
@@ -50,7 +51,7 @@ export default function Project({
             </div>
             <form className="form-nueva-subcat" onSubmit={handleSubP}>
               <div className="container d-flex align-items-center justify-content-end">
-                <label className="form-label" htmlFor="item">
+                <label className="form-label texto-imp" htmlFor="item">
                   {lang == "es" ? "Nuevo subproyecto" : "New subproject"}
                 </label>
                 <input
@@ -73,11 +74,11 @@ export default function Project({
                 if (!subcat.cerrada) {
                   return (
                     <div
-                      className="subcat d-flex flex-column justify-content-between"
+                      className="subcat texto-imp d-flex flex-column justify-content-between"
                       key={subcat.idSubcat}
                     >
                       <div className="fila-1 d-flex align-items-center justify-content-between">
-                        <div className="subcat-name texto-imp">
+                        <div className="subcat-name">
                           {subcat.nombreSubcat}
                         </div>
                         <button
@@ -92,9 +93,10 @@ export default function Project({
                           <ImCross className="x" />
                         </button>
                       </div>
-                      {!subcat.cerrada ? (
+                      <div className="fila-2 d-flex align-items-center judfy-content-between">
+                        <div>Progreso del día </div>
                         <div
-                          className={`celda celda-check ${
+                          className={`celda celda-project ${
                             subcat.diasCheckeados.filter(
                               (dia) => dia.date == diaActual
                             ).length > 0
@@ -115,7 +117,7 @@ export default function Project({
                                 ? "check-3"
                                 : "check-4"
                               : ""
-                          }`}
+                          } d-flex align-items-center justify-content-center`}
                           onClick={() =>
                             dispatch({
                               tipo: ACCIONES.ACTUALIZAR_SUBPROYECTO,
@@ -125,12 +127,13 @@ export default function Project({
                               },
                             })
                           }
-                        ></div>
-                      ) : null}
+                        ><FaCheck className="check-ic" /></div>
+                      </div>
 
-                      <div className="subcat-info">
-                        <div>Total : {subcat.diasCheckeados.length}</div>
-                        <div className="d-flex align-items-center">
+                      <div className="subcat-info d-flex flex-column g-10">
+                        <div className="">Total : {subcat.diasCheckeados.length}</div>
+                        <div className="row rg-10">
+                        <div className="d-flex col-6 align-items-center g-15">
                           <div className="celda check-1"></div>
                           {
                             subcat.diasCheckeados.filter(
@@ -138,7 +141,7 @@ export default function Project({
                             ).length
                           }
                         </div>
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex col-6 align-items-center g-15">
                           <div className="celda check-2"></div>
                           {
                             subcat.diasCheckeados.filter(
@@ -146,7 +149,7 @@ export default function Project({
                             ).length
                           }
                         </div>
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex col-6 align-items-center g-15">
                           <div className="celda check-3"></div>
                           {
                             subcat.diasCheckeados.filter(
@@ -154,7 +157,7 @@ export default function Project({
                             ).length
                           }
                         </div>
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex col-6 align-items-center g-15">
                           <div className="celda check-4"></div>
                           {
                             subcat.diasCheckeados.filter(
@@ -162,9 +165,7 @@ export default function Project({
                             ).length
                           }
                         </div>
-                        {subcat.cerrada ? (
-                          <div className="cerrado">Cerrado</div>
-                        ) : null}
+                        </div>
                       </div>
                       <button
                         onClick={() =>

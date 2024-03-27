@@ -52,30 +52,57 @@ export default function ProjectStats({ project }) {
     <>
       <div className="stats-tab">
         <div className="content d-flex">
-          <div className="section-1 texto-imp texto-celeste">
+          <div className="section-1 texto-imp">
             <div className="subsect">
-              <div>{lang === "es" ? "Fecha de creación:" : "Creation date:"} {stats?.creacion}</div>
-              <div>{lang === "es" ? "Tipo:" : "Type:"} {project?.tipo}</div>
+              <div>
+                {lang === "es" ? "Fecha de creación:" : "Creation date:"}{" "}
+                {stats?.creacion}
+              </div>
+              <div>
+                {lang === "es" ? "Tipo:" : "Type:"} {project?.tipo}
+              </div>
             </div>
             <div className="subsect">
-              <div className="subtitulo">{lang === "es" ? "Subproyectos:" : "Subprojects:"}</div>
+              <div className="subtitulo">
+                {lang === "es" ? "Subproyectos:" : "Subprojects:"}
+              </div>
               <div>Total: {stats?.cantSubproyectos}</div>
-              <div>{lang === "es" ? "Activos:" : "Active:"} {stats?.cantActivos}</div>
-              <div>{lang === "es" ? "Cerrados:" : "Closed:"} {stats?.cantCerradas}</div>
+              <div>
+                {lang === "es" ? "Activos:" : "Active:"} {stats?.cantActivos}
+              </div>
+              <div>
+                {lang === "es" ? "Cerrados:" : "Closed:"} {stats?.cantCerradas}
+              </div>
             </div>
             <div className="subsect">
-              <div className="subtitulo">{lang === "es" ? "Logros" : "Achievements"}</div>
+              <div className="subtitulo">
+                {lang === "es" ? "Logros" : "Achievements"}
+              </div>
               <div>Cantidad: {stats?.logros}</div>
             </div>
           </div>
-          <div className="section-2 texto-imp texto-celeste">
+          <div className="section-2 texto-imp">
             <div className="subsect">
               <div className="subtitulo">Días dedicados</div>
-              <div>Total: {stats?.cantDiasCheckeados}</div>
-              <div>Status 0: {stats?.cantDiasStatus0}</div>
-              <div>Status 1: {stats?.cantDiasStatus1}</div>
-              <div>Status 2: {stats?.cantDiasStatus2}</div>
-              <div>Status 3: {stats?.cantDiasStatus3}</div>
+              <div className="total">Total: {stats?.cantDiasCheckeados}</div>
+              <div className="row rg-10">
+                <div className="d-flex col-6 align-items-center g-15">
+                  <div className="celda check-1"></div>
+                  {stats?.cantDiasStatus0}
+                </div>
+                <div className="d-flex col-6 align-items-center g-15">
+                  <div className="celda check-2"></div>
+                  {stats?.cantDiasStatus2}
+                </div>
+                <div className="d-flex col-6 align-items-center g-15">
+                  <div className="celda check-3"></div>
+                  {stats?.cantDiasStatus2}
+                </div>
+                <div className="d-flex col-6 align-items-center g-15">
+                  <div className="celda check-4"></div>
+                  {stats?.cantDiasStatus3}
+                </div>
+              </div>
             </div>
           </div>
         </div>

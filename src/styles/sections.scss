@@ -200,6 +200,9 @@ footer {
     padding: 10px 0;
     .container {
       gap: 10px;
+      .form-label {
+        margin-bottom: 0;
+      }
       .input-form {
         border-radius: 6px;
       }
@@ -234,8 +237,28 @@ footer {
         border-radius: 8px;
         color: $violeta-4;
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        .fila-1 {
+          border-bottom: 2px solid $violeta-3;
+          padding-bottom: 15px;
+        }
+        .fila-2 {
+          .celda {
+            .check-ic {
+              color: $violeta-3;
+              display: none;
+            }
+            &.check-1,
+            &.check-2,
+            &.check-3,
+            &.check-4 {
+              .check-ic {
+                display: block;
+              }
+            }
+          }
+        }
         .subcat-name {
-          font-size: 18px;
+          font-size: 19px;
         }
       }
     }
@@ -354,6 +377,7 @@ footer {
   padding: 15px;
   .content {
     gap: 30px;
+    color: $celeste;
     .subsect {
       margin-bottom: 20px;
       .subtitulo {
@@ -362,5 +386,20 @@ footer {
         border-bottom: 2px solid $celeste;
       }
     }
+    .section-1 {
+      width: -webkit-fill-available;
+    }
+    .section-2 {
+      .total {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.instructions {
+  .seccion {
+    margin-bottom: 40px;
+    color: $violeta-3;
   }
 }
