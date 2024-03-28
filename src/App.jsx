@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { DATA, useData } from "./context/DataContext";
+import { useData } from "./context/DataContext";
 import { useEffect, useReducer, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Home from "./components/pages/Home";
@@ -15,6 +15,7 @@ const day = objDate.getDate();
 const diaActual = year + "-" + month + "-" + day;
 
 export const ACCIONES = {
+  INIT_DATA: "init-data",
   ACTUALIZAR_DATA: "actualizar-data",
   AGREGAR_PROYECTO: "agregar-proyecto",
   BORRAR_PROYECTO: "borrar-proyecto",
@@ -29,6 +30,8 @@ export const ACCIONES = {
 
 function reducer(categorias, accion) {
   switch (accion.tipo) {
+    case ACCIONES.INIT_DATA:
+      return accion.payload.data;
     case ACCIONES.ACTUALIZAR_DATA:
       return categorias
         .sort(function (a, b) {
@@ -248,8 +251,8 @@ function finalizarSubProyecto(idP, idSubP, categorias) {
 }
 
 export default function App() {
-  //const { data } = useData();
-  const [categorias, dispatch] = useReducer(reducer, DATA);
+  const { data } = useData();
+  const [categorias, dispatch] = useReducer(reducer, []);
   const [nuevoP, setNuevoP] = useState("");
   const [nuevoT, setNuevoT] = useState("");
   const [nuevoSubP, setNuevoSubP] = useState("");
@@ -257,6 +260,13 @@ export default function App() {
   const [cardHeights, setCardHeights] = useState([]);
 
   const newProjectEl = useRef();
+
+  useEffect(() => {
+    dispatch({
+      tipo: ACCIONES.INIT_DATA,
+      payload: { data },
+    });
+  }, [data]);
 
   useEffect(() => {
     dispatch({
@@ -306,7 +316,7 @@ export default function App() {
             }
           />
         </Route>
-        <Route path="*" element={<h1>Ups!Página no encontrada</h1>} />
+        <Route path="*" element={<h1>Página no encontrada</h1>} />
       </Routes>
       <Footer />
     </>

@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../../assets/logo-celeste-circulo.svg";
-import esLogo from "../../assets/esp.svg";
-import enLogo from "../../assets/eng.svg";
+import logo from "../../assets/logo-celeste.svg";
+import esLogo from "../../assets/es.svg";
+import enLogo from "../../assets/en.svg";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useUserOptions } from "../../context/UserOptionsContext";
 import { HiQuestionMarkCircle } from "react-icons/hi";

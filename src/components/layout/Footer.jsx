@@ -1,6 +1,6 @@
 import React from "react";
-import logoceleste from "../../assets/logo-celeste-circulo.svg";
-import logovioleta from "../../assets/logo-violeta-circulo.svg";
+import logoceleste from "../../assets/logo-celeste.svg";
+import logovioleta from "../../assets/logo-violeta.svg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineContactPage } from "react-icons/md";

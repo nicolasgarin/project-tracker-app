@@ -401,5 +401,15 @@ footer {
   .seccion {
     margin-bottom: 40px;
     color: $violeta-3;
+    .img {
+      transition: .5s;
+      &:hover {
+        transform: scale(1.1);
+        transition: .5s;
+      }
+      &.img-2 {
+        max-width: 500px;
+      }
+    }
   }
 }
